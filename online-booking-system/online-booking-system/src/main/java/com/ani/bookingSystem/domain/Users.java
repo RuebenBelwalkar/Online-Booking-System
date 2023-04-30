@@ -1,11 +1,16 @@
 package com.ani.bookingSystem.domain;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +41,13 @@ public class Users {
     private String password; // in stars
 
     @Column(name = "current_location")
-    private Double currentLocation;   
+    private String currentLocation;
+    
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    List<BookingSlots> bookingSlots;
+
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    private List<Feedback> invoices;
 }
 
 

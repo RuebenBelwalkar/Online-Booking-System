@@ -1,11 +1,15 @@
 package com.ani.bookingSystem.domain;
 import java.time.LocalTime;
+import java.util.List;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,6 +54,14 @@ public class BookingSlots {
     private Integer noOfStops; 
 
     @Column(name = "service_available")
-    private String serviceAvailable; 
+    private String serviceAvailable;
+    
+    @ManyToMany
+    @JoinTable(
+            name = "users_booking", 
+            joinColumns = @JoinColumn(name = "booking_slot_id"), 
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<Users> users;
 }
 
