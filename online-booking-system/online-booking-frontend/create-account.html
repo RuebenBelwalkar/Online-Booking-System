@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>create account Page</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- Custom styles for this template -->
+	<style>
+		 body 
+    {
+    background-color: black;
+    color:white;
+    }
+    .header {
+        padding: 2rem;
+        background-color: black;
+        color:white;
+    }
+    .header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: bold;
+        display: inline-block;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 1.5rem;
+        width: 100%;
+    }
+
+		.form-signup {
+			width: 100%;
+			max-width: 330px;
+			padding: 15px;
+			margin: 0 auto;
+		}
+		.form-signup .form-floating:focus-within {
+			z-index: 2;
+		}
+		.form-signup input[type="text"],
+		.form-signup input[type="email"],
+		.form-signup input[type="password"] {
+			margin-bottom: 10px;
+		}
+		.btn-create-account
+		{
+			background-color: #fff;
+			color: #000;
+			font-size: 1rem;
+			padding: 0.5rem 0.7rem;
+			border-radius: 1rem;
+		}
+	</style>
+</head>
+<body class="text-center">
+	<div class="header">
+		<h1>ONLINE BOOKING SYSTEM</h1>
+	</div>
+	<form class="form-signup">
+		
+		<h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+		<p class="text-center">Already have an account? <a href="login-page.html">login here</a>.</p>
+		<label for="inputUsername" class="visually-hidden">Username</label>
+		<input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+		<label for="inputEmail" class="visually-hidden">Email address</label>
+		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+		<label for="inputPassword" class="visually-hidden">Password</label>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<label for="inputLocation" class="visually-hidden">Current Location</label>
+		<input type="text" id="inputLocation" class="form-control" placeholder="Current Location" required>
+		<button class="w-90 btn btn-lg btn-primary btn-create-account" type="submit">CREATE ACCOUNT</button>
+		
+	</form>
+	<!-- Bootstrap JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
