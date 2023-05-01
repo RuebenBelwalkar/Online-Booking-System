@@ -12,18 +12,19 @@ import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Setter
 @Getter
 @Entity
-public class BookingSlots {
+public class BookingSlot {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-public class UsersBookingSlot {
+public class UsersBookingSlotDto {
     private String location;
     private LocalDate startDate;
     private LocalDate endDate;

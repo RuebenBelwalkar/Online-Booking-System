@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class BookingSlotByUser {
+public class UsersByBookingSlotDto {
     private String userName;
     private String email;
     private String currentLocation; 

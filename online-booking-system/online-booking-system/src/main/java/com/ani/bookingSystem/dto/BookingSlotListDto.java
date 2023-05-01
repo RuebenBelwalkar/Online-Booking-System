@@ -15,6 +15,7 @@ import lombok.ToString;
 @Getter
 
 public class BookingSlotListDto {
+    private Long id;
     private String location;
     private LocalDate startDate;
     private LocalDate endDate;
