@@ -44,7 +44,7 @@ public class Users {
     private String currentLocation;
     
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    List<BookingSlots> bookingSlots;
+    List<BookingSlot> bookingSlots;
 
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private List<Feedback> invoices;

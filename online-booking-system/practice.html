@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Welcome to our online booking system</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style type="text/css">
+		body {
+			background-color: black;
+			color: white;
+		}
+		.dashboard {
+			background-color: white;
+			color: black;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			padding-top: 5rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid text-center">
+		<h1 class="my-5">WELCOME TO OUR ONLINE BOOKING SYSTEM</h1>
+		<hr style="border-top: 2px solid white;">
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2 dashboard">
+				<ul class="nav flex-column nav-pills">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">Check for Booking</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Your Current Bookings</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Your Reservation History</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Feedback</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Location</th>
+							<th>Date</th>
+							<th>Time</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Location 1</td>
+							<td>01/01/2023</td>
+							<td>10:00 AM</td>
+						</tr>
+						<tr>
+							<td>Location 2</td>
+							<td>01/02/2023</td>
+							<td>11:00 AM</td>
+						</tr>
+						<tr>
+							<td>Location 3</td>
+							<td>01/03/2023</td>
+							<td>12:00 PM</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
