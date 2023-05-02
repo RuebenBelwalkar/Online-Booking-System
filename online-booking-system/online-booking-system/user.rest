@@ -1,0 +1,26 @@
+### Create New Account
+
+POST http://localhost:8080/user/ HTTP/1.1 
+content-type: application/json
+
+{
+    "userName" : "xyz", 
+    "email" : "zwr", 
+    "password" : "abcd", 
+    "currentLocation" : "mumbai",
+    "role" : "admin"
+}
+
+### Get All users
+GET http://localhost:8080/user/
+
+### login
+POST http://localhost:8080/user/login HTTP/1.1 
+content-type: application/json
+
+{
+   
+    "email" : "zwr", 
+    "password" : "abcd" 
+   
+}
