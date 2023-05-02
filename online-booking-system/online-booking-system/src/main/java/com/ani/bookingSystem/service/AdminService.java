@@ -3,10 +3,13 @@ package com.ani.bookingSystem.service;
 import java.util.List;
 
 import com.ani.bookingSystem.dto.BookingSlotDto;
-import com.ani.bookingSystem.dto.BookingSlotListDto;
+import com.ani.bookingSystem.dto.UserCreateDto;
+import com.ani.bookingSystem.dto.UsersBookingSlotDto;
 import com.ani.bookingSystem.dto.UsersByBookingSlotDto;
+import com.ani.bookingSystem.dto.UsersCreateDto;
 import com.ani.bookingSystem.dto.UsersListDto;
 import com.ani.bookingSystem.exception.BookingSlotNotFoundException;
+import com.ani.bookingSystem.exception.UserNotFoundException;
 
 public interface AdminService {
 
@@ -15,15 +18,17 @@ public interface AdminService {
 
     List<UsersListDto> findUsers(String ss);
 
-    List<UsersByBookingSlotDto> findUserByBookingSlot();
+    Integer deleteUser(Long id)throws UserNotFoundException;
     
-    List<UsersByBookingSlotDto> findUserByBookingSlot(String ss);
+    Integer updateUser(UserCreateDto userCreateDto);
+
+    List<BookingSlotDto> findBookingSlotByUser(Long id) throws UserNotFoundException;
     
     Integer createBookingSlot(BookingSlotDto bookingSlot );
 
-    List<BookingSlotListDto> findBookingSlot();
+    List<BookingSlotDto> findBookingSlots();
 
-    List<BookingSlotListDto> findBookingSlot(String ss);
+    List<BookingSlotDto> findBookingSlot(String ss);
 
     Integer deleteBookingSlot(Long id)throws BookingSlotNotFoundException;
 

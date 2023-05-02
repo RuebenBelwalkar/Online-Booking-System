@@ -3,12 +3,12 @@ package com.ani.bookingSystem.service;
 import java.util.List;
 import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.UsersBookingSlotDto;
-import com.ani.bookingSystem.dto.UsersCreateDto;
+import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.exception.UserNotFoundException;
 
 public interface UsersService {
     
-    Integer createUser(UsersCreateDto user);
+    Integer createUser(UserCreateDto user);
 
     List<UsersBookingSlotDto> findUserBookingSlot();
 
