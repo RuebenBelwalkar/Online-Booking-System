@@ -45,10 +45,10 @@ function apiSignup(user, form) {
     }
 
     axios.post('http://localhost:8080/login/create', user, { headers })
-        .then(res => {
+        .then(()=> {
             form.reset()
             showSuccessModal()
-            window.location.href ="login-page.html" ;
+            window.location.href ='../login-page.html' ;
         }).catch(err => console.log(err))
 }
 
