@@ -33,19 +33,19 @@ public class Users {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "username" , nullable = false)
     private String userName;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password; // in stars
 
-    @Column(name = "current_location")
+    @Column(name = "current_location", nullable = false)
     private String currentLocation;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String role;
 
     

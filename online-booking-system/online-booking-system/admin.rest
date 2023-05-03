@@ -6,3 +6,5 @@ GET http://localhost:8080/admin/
 
 GET http://localhost:8080/admin/{"abc"}
 
+### Delete User By Id 
+DELETE http://localhost:8080/admin/1

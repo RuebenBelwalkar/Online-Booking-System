@@ -30,31 +30,31 @@ public class BookingSlot {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "location")
+    @Column(name = "location", nullable = false)
     private String location;
 
-    @Column(name = "start_date")
+    @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
     
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    @Column(name = "starting_time")
+    @Column(name = "starting_time", nullable = false)
     private LocalTime startingTime;   
 
-    @Column(name = "ending_time")
+    @Column(name = "ending_time", nullable = false)
     private LocalTime endingTime; 
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private Double price; 
 
-    @Column(name = "air_conditioning")
+    @Column(name = "air_conditioning", nullable = false)
     private String airConditioning; 
 
-    @Column(name = "no_of_stops")
+    @Column(name = "no_of_stops", nullable = false)
     private Integer noOfStops; 
 
-    @Column(name = "service_available")
+    @Column(name = "service_available", nullable = false)
     private String serviceAvailable;
     
     @ManyToMany

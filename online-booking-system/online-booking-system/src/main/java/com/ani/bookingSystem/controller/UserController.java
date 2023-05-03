@@ -30,16 +30,7 @@ public class UserController {
     private final UserService userService;
 
         
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<UsersDto>>> findAll() {
-        List<UsersDto> users=userService.findUsers();
-        AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
-                                                            .sts("success")
-                                                            .msg("Invoices")
-                                                            .bd(users)
-                                                            .build();
-        return ResponseEntity.ok().body(response);
-    }
+   
 
 
 }
