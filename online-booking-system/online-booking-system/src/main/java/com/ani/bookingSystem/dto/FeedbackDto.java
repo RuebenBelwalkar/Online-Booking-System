@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 
 public class FeedbackDto {
-
+    private Long id;
     private String comment;
     private Double rating;
 }

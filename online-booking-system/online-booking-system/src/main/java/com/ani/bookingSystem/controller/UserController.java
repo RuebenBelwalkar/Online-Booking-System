@@ -29,32 +29,6 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createCustomer(@RequestBody UserCreateDto dto) {
-        final Integer sts = userService.createUser(dto);
-        
-        final AppResponse<Integer> response = AppResponse.<Integer>builder()
-                                                    .sts("success")
-                                                    .msg("user Created Successfully")
-                                                    .bd(sts)
-                                                    .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        
-    }
-
-    
-    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<String>> loginUser(@RequestBody loginDto dto) {
-         String sts = userService.loginUser(dto);
-        
-        final AppResponse<String> response = AppResponse.<String>builder()
-                                                    .sts("success")
-                                                    .msg("user login as")
-                                                    .bd(sts)
-                                                    .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
-
         
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<UsersDto>>> findAll() {

@@ -13,11 +13,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -42,6 +44,11 @@ public class Users {
 
     @Column(name = "current_location")
     private String currentLocation;
+
+    @Column(name = "role")
+    private String role;
+
+    
     
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     List<BookingSlot> bookingSlots;

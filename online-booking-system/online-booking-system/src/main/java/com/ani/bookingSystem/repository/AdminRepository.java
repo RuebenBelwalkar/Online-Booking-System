@@ -11,5 +11,5 @@ public interface AdminRepository extends JpaRepository<BookingSlot, Long> {
 
     List<BookingSlot> findBookingSlotByLocation(String ss);
 
-    List <BookingSlot> findByUser(Long id);
+    List <BookingSlot> findByUsers(Long id);
 }

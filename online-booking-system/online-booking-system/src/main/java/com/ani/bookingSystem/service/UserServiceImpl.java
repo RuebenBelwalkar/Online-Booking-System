@@ -40,14 +40,9 @@ public class UserServiceImpl implements UserService{
     private final FeedbackRepository feedbackRepository;
     private final BookingSlotMapper bookingSlotMapper;
     private final UserMapper userMapper;
-    private final UserCreateMapper userCreateMapper;
     private final FeedbackMapper feedbackMapper;
-    private final DynamicMapper dynamicMapper;
-    @Override
-    public Integer createUser(UserCreateDto user) {
-      usersRepository.save(userCreateMapper.toDomain(user));
-      return 1;
-    }
+    
+  
 
     // @Override
     // public Integer creatNewUserBooking(UsersBookingSlotDto dto) {
@@ -126,19 +121,7 @@ public class UserServiceImpl implements UserService{
                             .collect(Collectors.toList());
     }
 
-    @Override
-    public String loginUser(loginDto dto) {
-    Users user=dynamicMapper.toDomain(dto);
-    List<Users> users = usersRepository.findAll();
-    for(Users users2:users){
-      if(user.getEmail().equals(users2.getEmail())&&user.getPassword().equals(users2.getPassword())){
-       
-            return users2.getRole();
-      }
-    }
-    return "invalid user";
-
-    }
+   
       //
     // @Override
     // public Integer creatNewUserBooking(UsersBookingSlotDto dto) {

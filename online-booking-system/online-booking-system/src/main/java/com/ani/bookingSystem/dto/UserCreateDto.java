@@ -10,8 +10,10 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserCreateDto {
+    private Long id;
     private String userName;
     private String email;
     private String password;
     private String currentLocation; 
+    private String role;
 }
