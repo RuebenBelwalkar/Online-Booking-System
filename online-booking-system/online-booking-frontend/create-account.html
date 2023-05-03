@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<title>create account Page</title>
@@ -11,11 +12,13 @@
 			background-color: black;
 			color: white;
 		}
+
 		.header {
 			padding: 2rem;
 			background-color: black;
 			color: white;
 		}
+
 		.header h1 {
 			margin: 0;
 			font-size: 2rem;
@@ -25,6 +28,7 @@
 			padding-bottom: 1.5rem;
 			width: 100%;
 		}
+
 		.form-signup {
 			width: 100%;
 			max-width: 330px;
@@ -32,15 +36,18 @@
 			margin: 0 auto;
 			text-align: center;
 		}
+
 		.form-signup .form-floating:focus-within {
 			z-index: 2;
 		}
+
 		.form-signup input[type="text"],
 		.form-signup input[type="email"],
 		.form-signup input[type="password"],
 		.form-signup select {
 			margin-bottom: 20px;
 		}
+
 		.btn-create-account {
 			background-color: #fff;
 			color: #000;
@@ -50,29 +57,59 @@
 		}
 	</style>
 </head>
+
 <body class="text-center">
 	<div class="header">
 		<h1>ONLINE BOOKING SYSTEM</h1>
 	</div>
-	<form class="form-signup">
-		<h1 class="h3 mb-3 fw-normal">Sign Up</h1>
+	<form class="form-signup" id="formSignup">
+		<h1 class="h3 mb-3 fw-normal">Create Account</h1>
 		<p class="text-center">Already have an account? <a href="login-page.html">login here</a>.</p>
-		<label for="inputUsername" class="visually-hidden">Username</label>
-		<input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-		<label for="inputEmail" class="visually-hidden">Email address</label>
-		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-		<label for="inputPassword" class="visually-hidden">Password</label>
-		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		<label for="inputLocation" class="visually-hidden">Current Location</label>
-		<input type="text" id="inputLocation" class="form-control" placeholder="Current Location" required>
-		<label for="inputRole" class="visually-hidden">Role</label>
-		<select id="inputRole" class="form-select" required>
-			<option value="" selected disabled hidden>Choose Role</option>
-			<option value="admin">Admin</option>
-			<option value="user">User</option>
-		</select>
-		<button class="w-90 btn btn-lg btn-primary btn-create-account" type="submit">CREATE ACCOUNT</button>
+		<div class="row">
+			<div class="col">
+				<div class="alert alert-danger" role="alert" id="errMsg">
+				</div>
+			</div>
+			<label for="inputUsername" class="visually-hidden">Username</label>
+			<input type="text" id="inputUsername" class="form-control" placeholder="Username" name="userName" required
+				autofocus>
+			<label for="inputEmail" class="visually-hidden">Email address</label>
+			<input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" required>
+			<label for="inputPassword" class="visually-hidden">Password</label>
+			<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"
+				required>
+			<label for="inputLocation" class="visually-hidden">Current Location</label>
+			<input type="text" id="inputLocation" class="form-control" placeholder="Current Location"
+				name="currentLocation" required>
+			<label for="inputRole" class="visually-hidden">Role</label>
+			<select id="inputRole" class="form-select" name="role" required>
+				<option value="" selected disabled hidden>Choose Role</option>
+				<option value="admin">Admin</option>
+				<option value="user">User</option>
+			</select>
+			<button class="w-90 btn btn-lg btn-primary btn-create-account" type="submit">CREATE ACCOUNT</button>
+
+			
+			<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Success</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							User Created Successfully
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
 	</form>
-	<!-- Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="https://cdnjs
+             <script src="./restapi/create-account.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs -->
+</body>
+
+</html>
