@@ -76,7 +76,7 @@ public class AdminController {
 
         final AppResponse<Integer> response = AppResponse.<Integer>builder()
                                                     .sts("success")
-                                                    .msg("Invoice Updated Successfully")
+                                                    .msg("user Updated Successfully")
                                                     .bd(sts)
                                                     .build();
 

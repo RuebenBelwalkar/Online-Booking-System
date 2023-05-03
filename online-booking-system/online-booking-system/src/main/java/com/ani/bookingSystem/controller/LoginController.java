@@ -28,7 +28,7 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createCustomer(@RequestBody UserCreateDto dto) {
+    public ResponseEntity<AppResponse<Integer>> createUser(@RequestBody UserCreateDto dto) {
         final Integer sts = loginService.createUser(dto);
         
         final AppResponse<Integer> response = AppResponse.<Integer>builder()

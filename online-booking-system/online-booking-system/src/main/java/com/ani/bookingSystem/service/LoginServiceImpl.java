@@ -9,7 +9,7 @@ import com.ani.bookingSystem.domain.Users;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.loginDto;
 import com.ani.bookingSystem.repository.UsersRepository;
-import com.ani.bookingSystem.util.DynamicMapper;
+import com.ani.bookingSystem.util.LoginMapper;
 import com.ani.bookingSystem.util.UserCreateMapper;
 
 
@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService{
 
     private final UsersRepository usersRepository;
     private final UserCreateMapper userCreateMapper;
-    private final DynamicMapper dynamicMapper;
+    private final LoginMapper loginMapper;
     
     @Override
     public Integer createUser(UserCreateDto user) {
@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService{
 
     @Override
     public String loginUser(loginDto dto) {
-    Users user=dynamicMapper.toDomain(dto);
+    Users user=loginMapper.toDomain(dto);
     List<Users> users = usersRepository.findAll();
     for(Users users2:users){
       if(user.getEmail().equals(users2.getEmail())&&user.getPassword().equals(users2.getPassword())){
