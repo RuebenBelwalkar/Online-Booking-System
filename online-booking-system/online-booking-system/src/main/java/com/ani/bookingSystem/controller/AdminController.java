@@ -83,8 +83,8 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createCustomer(@RequestBody BookingSlotDto dto) {
+    @PostMapping(value = "/create/bookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> createBookingSlot(@RequestBody BookingSlotDto dto) {
         final Integer sts = adminService.createBookingSlot(dto);
         
         final AppResponse<Integer> response = AppResponse.<Integer>builder()

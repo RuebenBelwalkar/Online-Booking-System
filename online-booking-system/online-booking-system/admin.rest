@@ -7,4 +7,16 @@ GET http://localhost:8080/admin/
 GET http://localhost:8080/admin/{"abc"}
 
 ### Delete User By Id 
-DELETE http://localhost:8080/admin/1
+DELETE http://localhost:8080/admin/7
+
+### update User 
+PUT http://localhost:8080/admin/ HTTP/1.1 
+content-type: application/json
+
+{   "id":2,
+    "userName" : "abb", 
+    "email" : "john@gmail.com", 
+    "currentLocation" : "jaipur",
+    
+
+}

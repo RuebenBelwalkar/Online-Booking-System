@@ -2,6 +2,8 @@ package com.ani.bookingSystem.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.bookingSystem.dto.AppResponse;
+import com.ani.bookingSystem.dto.ForgotPasswordDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.loginDto;
 import com.ani.bookingSystem.service.LoginService;
@@ -50,6 +53,17 @@ public class LoginController {
                                                     .msg("user login as")
                                                     .bd(sts)
                                                     .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PostMapping(value = "/forgotpassword", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<String>> forgotPassUser(@Valid @RequestBody ForgotPasswordDto dto) {
+        String pass = loginService.forgotPassword(dto);
+        AppResponse<String> response = AppResponse.<String>builder()
+                .sts("send")
+                .msg("email has been sent")
+                .bd(pass)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
