@@ -1,0 +1,8 @@
+### Get All users
+
+GET http://localhost:8080/admin/
+
+### Get All users
+
+GET http://localhost:8080/admin/{"abc"}
+
