@@ -38,18 +38,22 @@ function apiLogin(user, form) {
     const headers = {
         'content-type': 'application/json'
     }
+    console.log("inside api")
 
     axios.post('http://localhost:8080/login/', user, { headers })
         .then(httpResponse => {
+            // console.log(httpResponse)
             form.reset()
             console.log(httpResponse)
+            console.log(httpResponse.data.bd)
 
             return httpResponse.data
+        
 
         }).then(data => {
-            const { role } = data.bd
+            const role  = data.bd
 
-            if(role == 'admin') window.location.href ='../dashboard/admin-homepage.html' 
+            if(role === 'admin') window.location.href ='../dashboard/admin-homepage.html' 
             else  window.location.href = '../dashboard/user-homepage.html'
         } )
         .catch(err => {
@@ -59,3 +63,4 @@ function apiLogin(user, form) {
             errDv.innerHTML = `<strong>${err.response.data.msg}</strong>`
         })
 }
+    
