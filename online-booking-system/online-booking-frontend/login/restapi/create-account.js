@@ -48,7 +48,7 @@ function apiSignup(user, form) {
         .then(()=> {
             form.reset()
             showSuccessModal()
-            window.location.href ='../login-page.html' ;
+
         }).catch(err => console.log(err))
 }
 

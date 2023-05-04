@@ -22,11 +22,11 @@ public interface AdminService {
     
      Integer createBookingSlot(BookingSlotDto bookingSlot );
 
-    // List<BookingSlotDto> findBookingSlots();
+     List<BookingSlotDto> findBookingSlots();
 
     // List<BookingSlotDto> findBookingSlot(String ss);
 
-    // Integer deleteBookingSlot(Long id)throws BookingSlotNotFoundException;
+    Integer deleteBookingSlot(Long id)throws BookingSlotNotFoundException;
 
     // Integer updateBookingSlot( BookingSlotDto bookingSlot);
 

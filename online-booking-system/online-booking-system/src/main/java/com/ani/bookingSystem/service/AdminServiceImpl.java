@@ -27,45 +27,59 @@ public class AdminServiceImpl implements AdminService {
     private final AdminRepository adminRepository;
     private final BookingSlotMapper bookingSlotMapper;
     private final UserMapper userMapper;
-    
-    //to find all users detail
+
+    // to find all users detail
     @Override
     public List<UsersDto> findUsers() {
         return usersRepository.findAll()
-                            .stream()
-                            .map(userMapper::toDto)
-                            .collect(Collectors.toList());
+                .stream()
+                .map(userMapper::toDto)
+                .collect(Collectors.toList());
     }
 
-    //to find all users details with search
+    // to find all users details with search
     @Override
     public List<UsersDto> findUsers(String ss) {
         return usersRepository.findUserByUserName(ss)
-                            .stream()
-                            .map(userMapper::toDto)
-                            .collect(Collectors.toList());
-       
-    }
-    //the admin can delete the user account through this service
-    @Override
-    public Integer deleteUser(Long id) throws UserNotFoundException {
-       usersRepository.deleteById(id);
-       return 1;
+                .stream()
+                .map(userMapper::toDto)
+                .collect(Collectors.toList());
+
     }
 
-    //the admin can update the user account through this service
+    // the admin can delete the user account through this service
+    @Override
+    public Integer deleteUser(Long id) throws UserNotFoundException {
+        usersRepository.deleteById(id);
+        return 1;
+    }
+
+    // the admin can update the user account through this service
     @Override
     public Integer updateUser(UsersDto usersdto) {
-       usersRepository.save(userMapper.toDomain(usersdto));
-       return 1;
+        usersRepository.save(userMapper.toDomain(usersdto));
+        return 1;
     }
 
     @Override
     public Integer createBookingSlot(BookingSlotDto createSlot) {
-       adminRepository.save(bookingSlotMapper.toDomain(createSlot));
+        adminRepository.save(bookingSlotMapper.toDomain(createSlot));
         return 1;
-       
+
     }
 
-   
+    @Override
+    public List<BookingSlotDto> findBookingSlots() {
+        return adminRepository.findAll()
+                .stream()
+                .map(bookingSlotMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Integer deleteBookingSlot(Long id) throws BookingSlotNotFoundException {
+        adminRepository.deleteById(id);
+        return 1;
+    }
+
 }

@@ -30,8 +30,8 @@ public class AdminController {
 
     private final AdminService adminService;
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<UsersDto>>> findAll() {
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UsersDto>>> findAllUsers() {
         List<UsersDto> users = adminService.findUsers();
         AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
                 .sts("success")
@@ -41,7 +41,7 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping(value = "/{ss}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/user/{ss}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<UsersDto>>> findAllByUsername(@PathVariable String ss) {
         List<UsersDto> users = adminService.findUsers(ss);
         AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
@@ -54,7 +54,7 @@ public class AdminController {
 
 
 
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> deleteUser(@PathVariable Long id) {
 
          Integer sts = adminService.deleteUser(id);
@@ -69,7 +69,7 @@ public class AdminController {
 
     }
     
-    @PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/user/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> updateUser(@RequestBody UsersDto dto) {
 
         final Integer sts = adminService.updateUser(dto);
@@ -94,6 +94,32 @@ public class AdminController {
                                                     .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
         
+    }
+
+    @GetMapping(value = "/bookingslot", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<BookingSlotDto>>> findAllBookingSlots() {
+        List<BookingSlotDto> bookingSlot = adminService.findBookingSlots();
+        AppResponse<List<BookingSlotDto>> response = AppResponse.<List<BookingSlotDto>>builder()
+                .sts("success")
+                .msg("All Booking slots")
+                .bd(bookingSlot)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping(value = "/bookingslot/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> deleteBookingSlot(@PathVariable Long id) {
+
+         Integer sts = adminService.deleteBookingSlot(id);
+
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .sts("success")
+                .msg("Booking slot Deleted Successfully")
+                .bd(sts)
+                .build();
+
+        return ResponseEntity.status(200).body(response);
+
     }
 
 

@@ -1,16 +1,16 @@
 ### Get All users
 
-GET http://localhost:8080/admin/
+GET http://localhost:8080/admin/users
 
 ### Get All users
 
-GET http://localhost:8080/admin/{"abc"}
+GET http://localhost:8080/admin/user/{"abc"}
 
 ### Delete User By Id 
-DELETE http://localhost:8080/admin/7
+DELETE http://localhost:8080/admin/user/7
 
 ### update User 
-PUT http://localhost:8080/admin/ HTTP/1.1 
+PUT http://localhost:8080/admin/user/update HTTP/1.1 
 content-type: application/json
 
 {   "id":2,
@@ -20,3 +20,29 @@ content-type: application/json
     
 
 }
+### create Booking slot
+
+POST http://localhost:8080/admin/create/bookingslot HTTP/1.1 
+content-type: application/json
+
+{
+
+  "location": "New York",
+  "startDate": "2023-05-05",
+  "endDate": "2023-05-10",
+  "startingTime": "14:00",
+  "endingTime": "17:00",
+  "price": 100.0,
+  "airConditioning": "Yes",
+  "noOfStops": 2,
+  "serviceAvailable": "no"
+
+}
+
+### Get all Booking slots
+
+GET http://localhost:8080/admin/bookingslot
+
+### delete Booking slot
+
+DELETE http://localhost:8080/admin/bookingslot/13
