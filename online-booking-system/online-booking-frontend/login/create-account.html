@@ -65,7 +65,11 @@
 			padding: 0.5rem 0.7rem;
 			border-radius: 1rem;
 		}
-		
+
+		.text-lg {
+			font-size: 1.5rem;
+			
+		}
 	</style>
 </head>
 
@@ -96,8 +100,8 @@
 			<label for="inputRole" class="visually-hidden">Role</label>
 			<select id="inputRole" class="form-select" name="role" required>
 				<option value="" selected disabled hidden>Choose Role</option>
-				<option value="admin">Admin</option>
-				<option value="user">User</option>
+				<option value="admin">admin</option>
+				<option value="user">user</option>
 			</select>
 			<button class="w-90 btn btn-lg btn-primary btn-create-account" type="submit">CREATE ACCOUNT</button>
 
@@ -107,11 +111,12 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" class="text-black" id="exampleModalLabel" >Success</h5>
+							<h5 class="modal-title" class="text-black" id="exampleModalLabel" style="color: black;">
+								Success</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<p class="text-black">User Created Successfully</p>
+							<p class="text-black text-lg">User Created Successfully!!!</p>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

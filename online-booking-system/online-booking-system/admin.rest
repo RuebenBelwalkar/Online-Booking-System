@@ -4,19 +4,23 @@ GET http://localhost:8080/admin/users
 
 ### Get All users
 
-GET http://localhost:8080/admin/user/{"abc"}
+GET http://localhost:8080/admin/user/14
 
 ### Delete User By Id 
-DELETE http://localhost:8080/admin/user/7
+DELETE http://localhost:8080/admin/user/15
 
 ### update User 
 PUT http://localhost:8080/admin/user/update HTTP/1.1 
 content-type: application/json
 
-{   "id":2,
-    "userName" : "abb", 
-    "email" : "john@gmail.com", 
-    "currentLocation" : "jaipur",
+{  
+  
+ "id": 16,
+ "userName" : "rueben", 
+ "email" : "ally@gmail.com",
+ "password": "abcd", 
+ "currentLocation" : "jaipur",
+ "role": "admin"
     
 
 }
@@ -45,4 +49,23 @@ GET http://localhost:8080/admin/bookingslot
 
 ### delete Booking slot
 
-DELETE http://localhost:8080/admin/bookingslot/13
+DELETE http://localhost:8080/admin/bookingslot/14
+
+### update User 
+PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1 
+content-type: application/json
+
+{
+  "id": 34,
+  "location": "pune",
+  "startDate": "2023-05-04",
+  "endDate": "2023-05-11",
+  "startingTime": "13:00",
+  "endingTime": "15:00",
+  "price": 101.0,
+  "airConditioning": "no",
+  "noOfStops": 4,
+  "serviceAvailable": "yes"
+
+
+}

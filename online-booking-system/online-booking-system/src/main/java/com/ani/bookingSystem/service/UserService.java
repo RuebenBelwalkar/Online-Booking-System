@@ -12,8 +12,6 @@ import com.ani.bookingSystem.exception.UserNotFoundException;
 public interface UserService {
     
     
-    List<UsersDto> findUsers();
-
     // Integer creatNewUserBooking(UsersBookingSlotDto dto);
 
     // Integer createUserFeedBack(UsersFeedbackDto dto);

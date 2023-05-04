@@ -1,21 +1,20 @@
 package com.ani.bookingSystem.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ani.bookingSystem.domain.BookingSlot;
+import com.ani.bookingSystem.domain.Users;
 import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.exception.BookingSlotNotFoundException;
 import com.ani.bookingSystem.exception.UserNotFoundException;
 import com.ani.bookingSystem.repository.AdminRepository;
 import com.ani.bookingSystem.repository.UsersRepository;
-import com.ani.bookingSystem.util.BookingSlotMapper;
-import com.ani.bookingSystem.util.UserMapper;
+import com.ani.bookingSystem.util.DynamicMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -25,25 +24,33 @@ import lombok.AllArgsConstructor;
 public class AdminServiceImpl implements AdminService {
     private final UsersRepository usersRepository;
     private final AdminRepository adminRepository;
-    private final BookingSlotMapper bookingSlotMapper;
-    private final UserMapper userMapper;
+    private final DynamicMapper dynamicMapper;
 
     // to find all users detail
     @Override
     public List<UsersDto> findUsers() {
-        return usersRepository.findAll()
+        List<UsersDto> listusers = usersRepository.findAll()
                 .stream()
-                .map(userMapper::toDto)
+                .map(user -> dynamicMapper.convertor(user, new UsersDto()))
                 .collect(Collectors.toList());
+        if (listusers.isEmpty()) {
+            throw new UserNotFoundException("no Users present");
+        }
+        return listusers;
     }
 
     // to find all users details with search
     @Override
-    public List<UsersDto> findUsers(String ss) {
-        return usersRepository.findUserByUserName(ss)
+    public List<UsersDto> findUsers(Long id) {
+        List<UsersDto> showUser=usersRepository.findById(id)
                 .stream()
-                .map(userMapper::toDto)
+                .map(user -> dynamicMapper.convertor(user, new UsersDto()))
                 .collect(Collectors.toList());
+                if (showUser.isEmpty()) {
+                    throw new UserNotFoundException("no user present with this id = "+id);
+                }
+                return showUser;
+        
 
     }
 
@@ -56,30 +63,54 @@ public class AdminServiceImpl implements AdminService {
 
     // the admin can update the user account through this service
     @Override
-    public Integer updateUser(UsersDto usersdto) {
-        usersRepository.save(userMapper.toDomain(usersdto));
+    public Integer updateUser(UsersDto dto) {
+        isUserPresent(dto.getId());
+        usersRepository.save(dynamicMapper.convertor(dto, new Users()));
         return 1;
     }
 
     @Override
     public Integer createBookingSlot(BookingSlotDto createSlot) {
-        adminRepository.save(bookingSlotMapper.toDomain(createSlot));
+        BookingSlot bookingSlot = dynamicMapper.convertor(createSlot, new BookingSlot());
+        adminRepository.save(bookingSlot);
         return 1;
 
     }
 
     @Override
     public List<BookingSlotDto> findBookingSlots() {
-        return adminRepository.findAll()
+        List<BookingSlotDto> allBookingSlots= adminRepository.findAll()
                 .stream()
-                .map(bookingSlotMapper::toDto)
+                .map(bookingSlot -> dynamicMapper.convertor(bookingSlot, new BookingSlotDto()))
                 .collect(Collectors.toList());
+                if (allBookingSlots.isEmpty()) {
+                    throw new BookingSlotNotFoundException("No Booking slots present create new one");
+                }
+                return allBookingSlots;
+
     }
 
     @Override
     public Integer deleteBookingSlot(Long id) throws BookingSlotNotFoundException {
         adminRepository.deleteById(id);
         return 1;
+
+    }
+
+    @Override
+    public Integer updateBookingSlot(BookingSlotDto dto) {
+        isBookingSlotPresent(dto.getId());
+        adminRepository.save(dynamicMapper.convertor(dto, new BookingSlot()));
+        return 1;
+    }
+
+    private void isUserPresent(Long id) {
+        usersRepository.findById(id).orElseThrow(() -> new UserNotFoundException("No User found for " + id + " ID"));
+    }
+
+    private void isBookingSlotPresent(Long id) {
+        adminRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("No Booking slot found for " + id + " ID"));
     }
 
 }

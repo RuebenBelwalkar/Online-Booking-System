@@ -41,9 +41,9 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping(value = "/user/{ss}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<UsersDto>>> findAllByUsername(@PathVariable String ss) {
-        List<UsersDto> users = adminService.findUsers(ss);
+    @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UsersDto>>> findUserByid(@PathVariable Long id)  {
+        List<UsersDto> users = adminService.findUsers(id);
         AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
                 .sts("success")
                 .msg("All users")
@@ -120,6 +120,19 @@ public class AdminController {
 
         return ResponseEntity.status(200).body(response);
 
+    }
+    @PutMapping(value = "/bookingslot/update", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> updateUser(@RequestBody BookingSlotDto dto) {
+
+        final Integer sts = adminService.updateBookingSlot(dto);
+
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                                                    .sts("success")
+                                                    .msg("BookingSlot Updated Successfully")
+                                                    .bd(sts)
+                                                    .build();
+
+        return ResponseEntity.ok().body(response);
     }
 
 

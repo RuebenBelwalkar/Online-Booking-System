@@ -1,9 +1,9 @@
 const validateForm = ({ email, password }) => {
 
-    if (email.length <= 0) return { msg: 'invalid email', sts: false}
+    if (email.length <= 0) return { msg: 'invalid email', sts: false }
     if (password.length <= 0) return { msg: 'invalid password', sts: false }
 
-    return { sts : 'success', msg :'all fields are valid' }
+    return { sts: 'success', msg: 'all fields are valid' }
 }
 
 function setupForm() {
@@ -42,20 +42,21 @@ function apiLogin(user, form) {
 
     axios.post('http://localhost:8080/login/', user, { headers })
         .then(httpResponse => {
-            // console.log(httpResponse)
-            form.reset()
             console.log(httpResponse)
+            form.reset()
+            // console.log(httpResponse)
             console.log(httpResponse.data.bd)
 
             return httpResponse.data
-        
+
 
         }).then(data => {
-            const role  = data.bd
+            console.log(data)
+            const role = data.bd
 
-            if(role === 'admin') window.location.href ='../dashboard/admin-homepage.html' 
-            else  window.location.href = '../dashboard/user-homepage.html'
-        } )
+            if (role == 'admin') window.location.href = '../dashboard/admin-homepage.html'
+            else window.location.href = '../dashboard/user-homepage.html'
+        })
         .catch(err => {
             console.log(err)
             const errDv = document.getElementById('errMsg')
@@ -63,4 +64,3 @@ function apiLogin(user, form) {
             errDv.innerHTML = `<strong>${err.response.data.msg}</strong>`
         })
 }
-    
