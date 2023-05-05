@@ -1,8 +1,10 @@
 package com.ani.bookingSystem.domain;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,22 +41,22 @@ public class Users {
     @Column(name = "email",unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password; // in stars
 
     @Column(name = "current_location", nullable = false)
     private String currentLocation;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private String role;
 
     
     
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    List<BookingSlot> bookingSlots;
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BookingSlot> bookingSlots=new ArrayList<>();
 
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private List<Feedback> invoices;
+    private List<Feedback> feedback=new ArrayList<>();
 }
 
 

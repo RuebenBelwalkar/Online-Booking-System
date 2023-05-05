@@ -27,25 +27,33 @@ import com.ani.bookingSystem.util.DynamicMapper;
 import org.springframework.beans.BeanUtils;
 
 import lombok.AllArgsConstructor;
+
 @Transactional
 @AllArgsConstructor
 @Service
 
-
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     private final UsersRepository usersRepository;
     private final AdminRepository adminRepository;
     private final DynamicMapper dynamicMapper;
+
     @Override
     public Integer createNewUserBooking(NewUserBookingDto dto) {
-        Users user=usersRepository.findById(dto.getUserId()).orElseThrow(() -> new UserNotFoundException("No User found for ID"));
-       BookingSlot bookingSlot=new BookingSlot();
-       BeanUtils.copyProperties(dto,bookingSlot);
-    //    user.getBookingSlots().add(bookingSlot);
-    bookingSlot.getUsers().add(user);
-    adminRepository.save(bookingSlot);
-       return 1;
+        Users user = usersRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new UserNotFoundException("No Id found"));
+        BookingSlot bookingSlot = new BookingSlot();
+        BeanUtils.copyProperties(dto, bookingSlot);
+        // user.getBookingSlots().add(bookingSlot);
+        bookingSlot.getUsers().add(user);
+        adminRepository.save(bookingSlot);
+        return 1;
 
     }
-    
+
+    @Override
+    public List<NewUserBookingDto> findUserBookings() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findUserBookings'");
+    }
+
 }

@@ -4,11 +4,11 @@ POST http://localhost:8080/login/create HTTP/1.1
 content-type: application/json
 
 {
-    "userName" : "abc", 
-    "email" : "jam@gmail.com", 
+    "userName" : "pqr", 
+    "email" : "tom@gmail.com", 
     "password" : "abcd", 
     "currentLocation" : "delhi",
-    "role" : "admin"
+    "role" : "user"
 }
 
 ### login
@@ -18,7 +18,7 @@ content-type: application/json
 {
    
     "email": "tom@gmail.com", 
-    "password" : "123456" 
+    "password" : "abcd" 
    
 }
 
@@ -27,5 +27,5 @@ POST http://localhost:8080/login/forgotpassword HTTP/1.1
 content-type: application/json
 
 {
-   "email": "james@gmail.com"
+   "email": "tom@gmail.com"
 }

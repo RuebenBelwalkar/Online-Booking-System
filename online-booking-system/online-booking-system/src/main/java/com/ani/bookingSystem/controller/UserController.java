@@ -29,7 +29,7 @@ import lombok.AllArgsConstructor;
 public class UserController {
 
     private final UserService userService;
-
+    @CrossOrigin
     @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody NewUserBookingDto dto) {
         final Integer sts = userService.createNewUserBooking(dto);

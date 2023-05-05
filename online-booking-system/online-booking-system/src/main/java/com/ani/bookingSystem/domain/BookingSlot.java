@@ -1,7 +1,10 @@
 package com.ani.bookingSystem.domain;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import ch.qos.logback.core.subst.Token.Type;
+
 import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
@@ -48,21 +54,21 @@ public class BookingSlot {
     @Column(name = "price", nullable = false)
     private Double price; 
 
-    @Column(name = "air_conditioning", nullable = false)
+    @Column(name = "air_conditioning")
     private String airConditioning; 
 
-    @Column(name = "no_of_stops", nullable = false)
+    @Column(name = "no_of_stops")
     private Integer noOfStops; 
 
-    @Column(name = "service_available", nullable = false)
+    @Column(name = "service_available")
     private String serviceAvailable;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_booking", 
             joinColumns = @JoinColumn(name = "booking_slot_id"), 
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<Users> users;
+    private List<Users> users = new ArrayList<>();
 }
 
