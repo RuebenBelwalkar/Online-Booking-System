@@ -4,7 +4,7 @@ GET http://localhost:8080/admin/users
 
 ### Get All users
 
-GET http://localhost:8080/admin/user/14
+GET http://localhost:8080/admin/user/9
 
 ### Delete User By Id 
 DELETE http://localhost:8080/admin/user/15
@@ -15,7 +15,7 @@ content-type: application/json
 
 {  
   
- "id": 16,
+ "id": 6,
  "userName" : "rueben", 
  "email" : "ally@gmail.com",
  "password": "abcd", 
@@ -31,12 +31,12 @@ content-type: application/json
 
 {
 
-  "location": "mumbai",
-  "startDate": "2023-05-05",
-  "endDate": "2023-05-10",
-  "startingTime": "14:00",
-  "endingTime": "17:00",
-  "price": 100.0,
+  "location": "pune",
+  "startDate": "2023-05-07",
+  "endDate": "2023-05-14",
+  "startingTime": "4:00",
+  "endingTime": "6:00",
+  "price": 1000.0,
   "airConditioning": "Yes",
   "noOfStops": 2,
   "serviceAvailable": "no"
@@ -49,7 +49,7 @@ GET http://localhost:8080/admin/bookingslot
 
 ### delete Booking slot
 
-DELETE http://localhost:8080/admin/bookingslot/14
+DELETE http://localhost:8080/admin/bookingslot/7
 
 ### update User 
 PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1 

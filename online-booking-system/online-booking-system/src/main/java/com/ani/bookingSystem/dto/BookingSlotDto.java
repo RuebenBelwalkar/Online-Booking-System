@@ -50,19 +50,13 @@ public class BookingSlotDto {
     @NotBlank(message = "Price cant be blank")
     private Double price; 
 
-    @NotEmpty(message = "Air conditioning cant be empty")
-    @NotNull(message = "Air conditioning cant be null")
-    @NotBlank(message = "Air conditioning cant be blank")
+   
     private String airConditioning; 
 
-    @NotEmpty(message = "No of stops cant be empty")
-    @NotNull(message = "No of stops cant be null")
-    @NotBlank(message = "No of stops cant be blank")
+   
     private Integer noOfStops; 
 
-    @NotEmpty(message = "Service available cant be empty")
-    @NotNull(message = " Service available cant be null")
-    @NotBlank(message = "Service available cant be blank")
+   
     private String serviceAvailable;
 
     

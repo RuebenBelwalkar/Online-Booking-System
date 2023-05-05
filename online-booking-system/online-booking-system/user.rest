@@ -4,14 +4,20 @@ POST http://localhost:8080/user/createbookingslot HTTP/1.1
 content-type: application/json
 
 {
-
-  "location": "New York",
-  "startDate": "2023-05-05",
-  "endDate": "2023-05-10",
-  "startingTime": "14:00",
-  "endingTime": "17:00",
-  "price": 100.0,
-  "userId": 2
+      "location": "pune",
+      "startDate": "2023-05-04",
+      "endDate": "2023-05-11",
+      "startingTime": "13:00:00",
+      "endingTime": "15:00:00",
+      "price": 101.0,
+      "airConditioning": "no",
+      "noOfStops": 4,
+      "serviceAvailable": "yes",
+      "userId": 9
 
 
 }
+
+### Get All user bookings
+
+GET http://localhost:8080/user/userbooking/9

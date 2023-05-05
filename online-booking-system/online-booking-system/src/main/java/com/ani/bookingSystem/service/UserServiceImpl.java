@@ -1,5 +1,6 @@
 package com.ani.bookingSystem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ani.bookingSystem.domain.BookingSlot;
 import com.ani.bookingSystem.domain.Users;
+import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
 // import com.ani.bookingSystem.domain.Feedback;
 // import com.ani.bookingSystem.domain.Users;
@@ -49,11 +51,16 @@ public class UserServiceImpl implements UserService {
         return 1;
 
     }
-
-    @Override
-    public List<NewUserBookingDto> findUserBookings() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findUserBookings'");
+    public List<BookingSlotDto> findUserBookings(Long id) {
+        Users user = usersRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("No Id found"));
+        List<BookingSlotDto> bookingSlotDtos = new ArrayList<>();
+        for (BookingSlot bookingSlot : user.getBookingSlots()) {
+            BookingSlotDto bookingSlotDto = new BookingSlotDto();
+            BeanUtils.copyProperties(bookingSlot, bookingSlotDto);
+            bookingSlotDtos.add(bookingSlotDto);
+        }
+        return bookingSlotDtos;
     }
 
 }

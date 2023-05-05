@@ -5,9 +5,9 @@ content-type: application/json
 
 {
     "userName" : "pqr", 
-    "email" : "tom@gmail.com", 
+    "email" : "abc@gmail.com", 
     "password" : "abcd", 
-    "currentLocation" : "delhi",
+    "currentLocation" : "mumbai",
     "role" : "user"
 }
 

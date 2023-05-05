@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.bookingSystem.dto.AppResponse;
+import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.UsersDto;
@@ -40,7 +41,18 @@ public class UserController {
                                                     .bd(sts)
                                                     .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        
+   
+    }
+    @CrossOrigin
+    @GetMapping(value = "/userbooking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<BookingSlotDto>>> findUserByid(@PathVariable Long id)  {
+        List<BookingSlotDto> users = userService.findUserBookings(id);
+        AppResponse<List<BookingSlotDto>> response = AppResponse.<List<BookingSlotDto>>builder()
+                .sts("success")
+                .msg("All userbookings")
+                .bd(users)
+                .build();
+        return ResponseEntity.ok().body(response);
     }
    
 

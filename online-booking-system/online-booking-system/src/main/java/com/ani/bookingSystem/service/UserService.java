@@ -19,7 +19,7 @@ public interface UserService {
     
     // List<FeedbackDto> listAllFeedbacks();
 
-     List<NewUserBookingDto> findUserBookings();
+     List<BookingSlotDto> findUserBookings(Long id);
 
     // List<UsersBookingSlotDto> findUserBookingSlot(String ss);
 

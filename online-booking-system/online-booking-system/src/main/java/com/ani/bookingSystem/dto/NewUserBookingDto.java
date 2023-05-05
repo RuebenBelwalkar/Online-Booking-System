@@ -20,6 +20,9 @@ public class NewUserBookingDto{
     private LocalDate endDate;
     private LocalTime startingTime;   
     private LocalTime endingTime; 
-    private Double price; 
+    private Double price;
+    private String airConditioning;
+    private Integer noOfStops; 
+    private String serviceAvailable; 
     private long userId;
 }
