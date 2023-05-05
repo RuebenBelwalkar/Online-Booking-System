@@ -42,12 +42,12 @@ public class AdminController {
     }
 
     @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<UsersDto>>> findUserByid(@PathVariable Long id)  {
-        List<UsersDto> users = adminService.findUsers(id);
-        AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
+    public ResponseEntity<AppResponse<UsersDto>> findUserByid(@PathVariable Long id)  {
+        UsersDto user = adminService.findUserById(id);
+        AppResponse<UsersDto> response = AppResponse.<UsersDto>builder()
                 .sts("success")
                 .msg("All users")
-                .bd(users)
+                .bd(user)
                 .build();
         return ResponseEntity.ok().body(response);
     }
@@ -106,6 +106,8 @@ public class AdminController {
                 .build();
         return ResponseEntity.ok().body(response);
     }
+
+    
 
     @DeleteMapping(value = "/bookingslot/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> deleteBookingSlot(@PathVariable Long id) {

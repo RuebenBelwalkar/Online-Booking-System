@@ -13,7 +13,7 @@ public interface AdminService {
     
     List<UsersDto> findUsers();
 
-    List<UsersDto> findUsers(Long id);
+    UsersDto findUserById(Long id);
 
     Integer deleteUser(Long id)throws UserNotFoundException;
     

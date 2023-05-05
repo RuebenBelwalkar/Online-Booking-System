@@ -16,7 +16,7 @@ import lombok.ToString;
 @Getter
 
 public class FeedbackDto {
-    private Long id;
+    private Long userId;
     
     @NotEmpty(message = "Comment cant be empty")
     @NotNull(message = "Comment cant be null")

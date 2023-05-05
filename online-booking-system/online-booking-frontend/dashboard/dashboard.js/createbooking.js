@@ -1,7 +1,7 @@
 const validateForm = ({ location,startDate,endDate,startingTime,endingTime,price,airConditioning,noOfStops,serviceAvailable}) => {
 
-    // const airCond = ['yes', 'no']
-    // const serviceAvail=['yes','no']
+     const airCond = ['yes', 'no']
+     const serviceAvail=['yes','no']
 
     if (location.length <= 0) return { msg: 'invalid location', sts: false}
     if (startDate.length <= 0) return { msg: 'invalid date', sts: false }
@@ -9,9 +9,10 @@ const validateForm = ({ location,startDate,endDate,startingTime,endingTime,price
     if (startingTime.length <= 0) return { msg: 'invalid time', sts: false }
     if (endingTime.length <= 0) return { msg: 'invalid time', sts: false }
     if (price.length <= 0) return { msg: 'invalid input', sts: false }
-    if (airConditioning.length <= 0)  return { msg: 'invalid option', sts: false }
+    if((airConditioning.length <= 0) || !airCond.includes(airConditioning)) return { msg: 'invalid input', sts: false }
     if (noOfStops.length <= 0) return { msg: 'invalid input', sts: false }
-    if (serviceAvailable.length <= 0)  return { msg: 'invalid option', sts: false }
+    if((serviceAvailable.length <= 0) || !serviceAvail.includes(serviceAvailable)) return { msg: 'invalid input', sts: false }
+   
 
 
 

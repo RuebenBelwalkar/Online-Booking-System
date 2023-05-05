@@ -21,7 +21,7 @@ body {
 
 .line {
     border-top: 3px solid white;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .dashboard {
@@ -83,3 +83,17 @@ body {
 #inputRole {
     margin-bottom: 20px; /* Adjust the value as per your requirement */
   }
+
+  
+  th{
+    color: white;
+  }
+  .container {
+    width: 95%;
+  }
+  .btn{
+
+  }
+ 
+
+ 

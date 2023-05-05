@@ -15,7 +15,7 @@ content-type: application/json
 
 {  
   
- "id": 6,
+ "id": 9,
  "userName" : "rueben", 
  "email" : "ally@gmail.com",
  "password": "abcd", 
@@ -31,15 +31,15 @@ content-type: application/json
 
 {
 
-  "location": "pune",
-  "startDate": "2023-05-07",
-  "endDate": "2023-05-14",
-  "startingTime": "4:00",
-  "endingTime": "6:00",
-  "price": 1000.0,
-  "airConditioning": "Yes",
-  "noOfStops": 2,
-  "serviceAvailable": "no"
+  "location": "delhi",
+  "startDate": "2023-06-04",
+  "endDate": "2023-07-11",
+  "startingTime": "23:00",
+  "endingTime": "05:00",
+  "price": 1010.0,
+  "airConditioning": "no",
+  "noOfStops": 4,
+  "serviceAvailable": "yes"
 
 }
 
@@ -49,14 +49,14 @@ GET http://localhost:8080/admin/bookingslot
 
 ### delete Booking slot
 
-DELETE http://localhost:8080/admin/bookingslot/7
+DELETE http://localhost:8080/admin/bookingslot/16
 
 ### update User 
 PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1 
 content-type: application/json
 
 {
-  "id": 4,
+  "id": 11,
   "location": "pune",
   "startDate": "2023-05-04",
   "endDate": "2023-05-11",

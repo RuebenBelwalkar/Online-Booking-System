@@ -4,20 +4,41 @@ POST http://localhost:8080/user/createbookingslot HTTP/1.1
 content-type: application/json
 
 {
-      "location": "pune",
-      "startDate": "2023-05-04",
-      "endDate": "2023-05-11",
-      "startingTime": "13:00:00",
-      "endingTime": "15:00:00",
-      "price": 101.0,
+     "location": "delhi",
+      "startDate": "2023-06-04",
+      "endDate": "2023-07-11",
+      "startingTime": "23:00:00",
+      "endingTime": "05:00:00",
+      "price": 1010.0,
       "airConditioning": "no",
       "noOfStops": 4,
       "serviceAvailable": "yes",
-      "userId": 9
+      "userId": 12
 
 
 }
 
 ### Get All user bookings
 
-GET http://localhost:8080/user/userbooking/9
+GET http://localhost:8080/user/userbooking/12
+
+### delete Booking slot
+
+DELETE http://localhost:8080/user/12/bookings/24
+
+### Create New user feedback 
+
+POST http://localhost:8080/user/feedback/12 HTTP/1.1 
+content-type: application/json
+
+{
+
+    "userId": 12,
+    "comment": "it is working bad",
+    "rating": 10
+
+}
+
+### Get All feedbacks
+
+GET http://localhost:8080/user/feedback

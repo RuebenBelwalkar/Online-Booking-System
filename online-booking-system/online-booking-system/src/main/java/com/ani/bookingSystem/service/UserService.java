@@ -5,7 +5,7 @@ import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.FeedbackDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UsersDto;
-import com.ani.bookingSystem.dto.UsersFeedbackDto;
+
 import com.ani.bookingSystem.dto.loginDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.exception.UserNotFoundException;
@@ -15,15 +15,17 @@ public interface UserService {
     
     Integer createNewUserBooking(NewUserBookingDto dto);
 
-    // Integer createUserFeedBack(UsersFeedbackDto dto);
+     Integer createFeedback(FeedbackDto dto);
     
-    // List<FeedbackDto> listAllFeedbacks();
+     List<FeedbackDto> listAllFeedbacks();
 
      List<BookingSlotDto> findUserBookings(Long id);
 
-    // List<UsersBookingSlotDto> findUserBookingSlot(String ss);
+     Integer  deleteUserBooking(Long bookingId, Long userId);
 
-    // Integer deleteUserBookingSlot(Long id)throws UserNotFoundException;
+     Integer fetchUserDetails(Long id);
 
-    // BookingSlotDto fetchUserBookingDetails(Long id) throws UserNotFoundException;
+     
+
+    
 }

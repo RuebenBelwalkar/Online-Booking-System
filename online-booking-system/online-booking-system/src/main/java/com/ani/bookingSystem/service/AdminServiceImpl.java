@@ -41,18 +41,12 @@ public class AdminServiceImpl implements AdminService {
 
     // to find all users details with search
     @Override
-    public List<UsersDto> findUsers(Long id) {
-        List<UsersDto> showUser=usersRepository.findById(id)
-                .stream()
-                .map(user -> dynamicMapper.convertor(user, new UsersDto()))
-                .collect(Collectors.toList());
-                if (showUser.isEmpty()) {
-                    throw new UserNotFoundException("no user present with this id = "+id);
-                }
-                return showUser;
-        
-
+    public UsersDto findUserById(Long id) {
+        Users user = usersRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("No user present with this id = " + id));
+        return dynamicMapper.convertor(user, new UsersDto());
     }
+    
 
     // the admin can delete the user account through this service
     @Override
