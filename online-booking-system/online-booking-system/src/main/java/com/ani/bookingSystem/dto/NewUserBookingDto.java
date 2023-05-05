@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @Getter
 
-public class NewUserBooking{
+public class NewUserBookingDto{
     private String location;
     private LocalDate startDate;
     private LocalDate endDate;

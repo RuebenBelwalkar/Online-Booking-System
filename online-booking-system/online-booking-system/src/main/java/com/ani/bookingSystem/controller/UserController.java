@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.bookingSystem.dto.AppResponse;
+import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.dto.loginDto;
@@ -29,7 +30,18 @@ public class UserController {
 
     private final UserService userService;
 
+    @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody NewUserBookingDto dto) {
+        final Integer sts = userService.createNewUserBooking(dto);
         
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                                                    .sts("success")
+                                                    .msg("user booking Created Successfully")
+                                                    .bd(sts)
+                                                    .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        
+    }
    
 
 
