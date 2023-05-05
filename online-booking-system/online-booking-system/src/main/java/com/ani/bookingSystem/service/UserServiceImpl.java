@@ -31,5 +31,7 @@ import lombok.AllArgsConstructor;
 
 
 public class UserServiceImpl implements UserService{
-
+    private final UsersRepository usersRepository;
+    private final AdminRepository adminRepository;
+    private final DynamicMapper dynamicMapper;
 }
