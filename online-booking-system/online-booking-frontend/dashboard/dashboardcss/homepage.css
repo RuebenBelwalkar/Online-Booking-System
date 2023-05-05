@@ -25,7 +25,7 @@ body {
 }
 
 .dashboard {
-    position: absolute;
+    position:absolute;
     left: 50%;
     top: 62%;
     transform: translate(-50%, -50%);
@@ -34,6 +34,9 @@ body {
     width: 30%;
     padding: 20px;
     border-radius: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -47,6 +50,9 @@ body {
     cursor: pointer;
     font-size: 25px;
     border-radius: 20px;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
 }
 .form-signup {
     width: 100%;
@@ -91,9 +97,32 @@ body {
   .container {
     width: 95%;
   }
-  .btn{
+  .dashboard1 {
+    position: absolute;
+    left: 15%;
+    top: 52%;
+    transform: translate(-65%, -45%);
+    background-color: whitesmoke;
+    height: 62vh;
+    width: 23%;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
 
-  }
+
+.tab1 {
+    background-color: black;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 15px;
+}
+  
  
 
  

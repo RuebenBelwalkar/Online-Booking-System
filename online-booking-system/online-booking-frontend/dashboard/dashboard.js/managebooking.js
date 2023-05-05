@@ -1,3 +1,14 @@
+
+
+const readIdQueryParam = () => {
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    return params.bookingId
+}
+
+console.log(readIdQueryParam())
+
 function setupTable() {
     const table = document.getElementById('bookingTable')
 
@@ -28,9 +39,9 @@ function propulateActualData(table, bookings) {
 
     for(const booking of bookings) {
 
-        const {id ,location, startDate, endDate, startingTime, endingTime, price, airConditioning, noOFSteps, serviceAvailable } = invoice
-        const updatePageUrl = `./update-invoice.html?id=${id}`
-        const viewPageUrl = `./view-invoice.html?id=${id}`
+        const {id ,location, startDate, endDate, startingTime, endingTime, price } = booking
+        const updatePageUrl = `./updatebooking.html?id=${id}`
+        const viewPageUrl = `./detailedbooking.html?id=${id}`
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = id
@@ -40,10 +51,7 @@ function propulateActualData(table, bookings) {
         row.insertCell(4).innerHTML = startingTime
         row.insertCell(5).innerHTML = endingTime
         row.insertCell(6).innerHTML = price
-        row.insertCell(7).innerHTML = airConditioning
-        row.insertCell(8).innerHTML = noOFSteps
-        row.insertCell(9).innerHTML = serviceAvailable
-        row.insertCell(10).innerHTML = `
+        row.insertCell(7).innerHTML = `
             <a class='ms-2' href='${updatePageUrl}'>Update</a> 
             <a class='ms-2' onclick='showConfirmDeleteModal(${id})'>Delete</a> 
         `
@@ -74,8 +82,8 @@ function apiFetchAllbookings(table) {
         .catch(err => console.log(err))
 }
 
-function apiFetchAllCustomerInvoices(table, id) {
-    const url = `http://localhost:8080/invoice/customer/${id}`
+function apiFetchBooking(table, id) {
+    const url = `http://localhost:8080/admin/${id}`
     axios.get(url)
         .then(res => {
             const { data } = res
