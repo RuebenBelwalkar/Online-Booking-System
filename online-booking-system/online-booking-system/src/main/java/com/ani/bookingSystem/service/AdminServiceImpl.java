@@ -3,12 +3,14 @@ package com.ani.bookingSystem.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ani.bookingSystem.domain.BookingSlot;
 import com.ani.bookingSystem.domain.Users;
 import com.ani.bookingSystem.dto.BookingSlotDto;
+import com.ani.bookingSystem.dto.LessDetailedBooking;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.exception.BookingSlotNotFoundException;
 import com.ani.bookingSystem.exception.UserNotFoundException;
@@ -41,10 +43,13 @@ public class AdminServiceImpl implements AdminService {
 
     // to find all users details with search
     @Override
-    public UsersDto findUserById(Long id) {
-        Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("No user present with this id = " + id));
-        return dynamicMapper.convertor(user, new UsersDto());
+    public UsersDto findUserById(Long userId) {
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID " + userId));
+
+        UsersDto userDto = new UsersDto();
+        BeanUtils.copyProperties(user, userDto);
+        return userDto;
     }
     
 
@@ -72,10 +77,10 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<BookingSlotDto> findBookingSlots() {
-        List<BookingSlotDto> allBookingSlots= adminRepository.findAll()
+    public List<LessDetailedBooking> findBookingSlots() {
+        List<LessDetailedBooking> allBookingSlots= adminRepository.findAll()
                 .stream()
-                .map(bookingSlot -> dynamicMapper.convertor(bookingSlot, new BookingSlotDto()))
+                .map(bookingSlot -> dynamicMapper.convertor(bookingSlot, new LessDetailedBooking()))
                 .collect(Collectors.toList());
                 if (allBookingSlots.isEmpty()) {
                     throw new BookingSlotNotFoundException("No Booking slots present create new one");
@@ -105,6 +110,18 @@ public class AdminServiceImpl implements AdminService {
     private void isBookingSlotPresent(Long id) {
         adminRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("No Booking slot found for " + id + " ID"));
+    }
+
+    @Override
+    public BookingSlotDto fetchBookingSlotDetails(Long id)  {
+      
+        BookingSlot bookingSlot = adminRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID " + id));
+
+        BookingSlotDto bookingSlotDto= new BookingSlotDto();
+        BeanUtils.copyProperties(bookingSlot, bookingSlotDto);
+        return bookingSlotDto;
+    
     }
 
 }

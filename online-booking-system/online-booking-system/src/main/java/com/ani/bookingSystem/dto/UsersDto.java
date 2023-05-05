@@ -26,18 +26,11 @@ public class UsersDto {
     @NotBlank(message = "Email cant be blank")
     private String email;
 
-    @NotEmpty(message = "Email cant be empty")
-    @NotNull(message = "Email cant be null")
-    @NotBlank(message = "Email cant be blank")
-    private String password;
+  
 
     @NotEmpty(message = "Current location cant be empty")
     @NotNull(message = "Current location cant be null")
     @NotBlank(message = "Current location cant be blank")
     private String currentLocation;
 
-    @NotEmpty(message = "Email cant be empty")
-    @NotNull(message = "Email cant be null")
-    @NotBlank(message = "Email cant be blank")
-    private String role;
-}
+} 

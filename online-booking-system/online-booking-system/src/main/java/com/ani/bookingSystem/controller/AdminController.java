@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.bookingSystem.dto.AppResponse;
 import com.ani.bookingSystem.dto.BookingSlotDto;
+import com.ani.bookingSystem.dto.LessDetailedBooking;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.service.AdminService;
 
@@ -97,12 +98,23 @@ public class AdminController {
     }
 
     @GetMapping(value = "/bookingslot", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<BookingSlotDto>>> findAllBookingSlots() {
-        List<BookingSlotDto> bookingSlot = adminService.findBookingSlots();
-        AppResponse<List<BookingSlotDto>> response = AppResponse.<List<BookingSlotDto>>builder()
+    public ResponseEntity<AppResponse<List<LessDetailedBooking>>> findAllBookingSlots() {
+        List<LessDetailedBooking> bookingSlot = adminService.findBookingSlots();
+        AppResponse<List<LessDetailedBooking>> response = AppResponse.<List<LessDetailedBooking>>builder()
                 .sts("success")
                 .msg("All Booking slots")
                 .bd(bookingSlot)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<BookingSlotDto>> getUserByid(@PathVariable Long id) {
+        BookingSlotDto sts = adminService.fetchBookingSlotDetails(id);
+        AppResponse<BookingSlotDto> response = AppResponse.<BookingSlotDto>builder()
+                .sts("success")
+                .msg("fetched Bookking slot details")
+                .bd(sts)
                 .build();
         return ResponseEntity.ok().body(response);
     }

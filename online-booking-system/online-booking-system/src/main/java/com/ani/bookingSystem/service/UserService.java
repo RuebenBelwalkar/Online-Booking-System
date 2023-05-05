@@ -12,20 +12,23 @@ import com.ani.bookingSystem.exception.UserNotFoundException;
 
 public interface UserService {
     
-    
+    UsersDto getUserById(Long userId);
+
     Integer createNewUserBooking(NewUserBookingDto dto);
 
      Integer createFeedback(FeedbackDto dto);
     
      List<FeedbackDto> listAllFeedbacks();
 
+     Integer updateFeedback( FeedbackDto feedbackDto);
+
      List<BookingSlotDto> findUserBookings(Long id);
 
      Integer  deleteUserBooking(Long bookingId, Long userId);
 
-     Integer fetchUserDetails(Long id);
-
      
+
+
 
     
 }

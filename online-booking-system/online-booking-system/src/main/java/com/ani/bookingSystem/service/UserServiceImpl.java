@@ -22,6 +22,7 @@ import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.dto.loginDto;
 import com.ani.bookingSystem.exception.BookingSlotNotFoundException;
+import com.ani.bookingSystem.exception.FeedbackNotFoundException;
 import com.ani.bookingSystem.exception.UserNotFoundException;
 import com.ani.bookingSystem.repository.AdminRepository;
 import com.ani.bookingSystem.repository.FeedbackRepository;
@@ -40,6 +41,16 @@ public class UserServiceImpl implements UserService {
     private final UsersRepository usersRepository;
     private final AdminRepository adminRepository;
     private final FeedbackRepository feedbackRepository;
+
+    @Override
+    public UsersDto getUserById(Long userId) {
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with ID " + userId));
+
+        UsersDto userDto = new UsersDto();
+        BeanUtils.copyProperties(user, userDto);
+        return userDto;
+    }
 
     @Override
     public Integer createNewUserBooking(NewUserBookingDto dto) {
@@ -100,11 +111,18 @@ public class UserServiceImpl implements UserService {
             BeanUtils.copyProperties(feedback, feedbackDto);
             feedbackDtoList.add(feedbackDto);
             if(feedbackDtoList.isEmpty()){
-                throw new BookingSlotNotFoundException("no feedback present present");
+                throw new FeedbackNotFoundException("no feedback present ");
             }
         }
     
         return feedbackDtoList;
+    }
+    public Integer updateFeedback( FeedbackDto feedbackDto) {
+        Feedback feedback = feedbackRepository.findById(feedbackDto.getUserId())
+                .orElseThrow(() -> new FeedbackNotFoundException("No feedback found"));
+        BeanUtils.copyProperties(feedbackDto, feedback);
+        feedbackRepository.save(feedback);
+        return 1;
     }
     
 

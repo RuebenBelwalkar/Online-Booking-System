@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,17 @@ import lombok.AllArgsConstructor;
 public class UserController {
 
     private final UserService userService;
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<UsersDto>> getUserByid(@PathVariable Long id) {
+        UsersDto sts = userService.getUserById(id);
+        AppResponse<UsersDto> response = AppResponse.<UsersDto>builder()
+                .sts("success")
+                .msg("fetched users details")
+                .bd(sts)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
 
     @CrossOrigin
     @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -84,18 +96,29 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
+
     @GetMapping(value = "/feedback", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<FeedbackDto>>> getAllFeedbacks() {
         List<FeedbackDto> sts = userService.listAllFeedbacks();
         AppResponse<List<FeedbackDto>> response = AppResponse.<List<FeedbackDto>>builder()
-        .sts("success")
-        .msg("All Feedbacks")
-        .bd(sts)
-        .build();
-return ResponseEntity.ok().body(response);
-}
+                .sts("success")
+                .msg("All Feedbacks")
+                .bd(sts)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
 
-        
+    @PutMapping(value = "/feedback/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> updateFeedback(@RequestBody FeedbackDto dto) {
+        final Integer sts = userService.updateFeedback(dto);
+        final AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .sts("success")
+                .msg("Feedback updated Successfully")
+                .bd(sts)
+                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+
     }
 
 
+}
