@@ -31,13 +31,13 @@ content-type: application/json
 
 {
 
-  "location": "delhi",
+  "location": "pune",
   "startDate": "2023-06-04",
   "endDate": "2023-07-11",
   "startingTime": "23:00",
   "endingTime": "05:00",
   "price": 1010.0,
-  "airConditioning": "no",
+  "airConditioning": "yes",
   "noOfStops": 4,
   "serviceAvailable": "yes"
 
@@ -47,9 +47,14 @@ content-type: application/json
 
 GET http://localhost:8080/admin/bookingslot
 
+### Get all Booking slots by location
+
+GET http://localhost:8080/admin/bookingslot/kolkata
+
+
 ### Fetch booking slot
 
-GET http://localhost:8080/admin/booking/10
+GET http://localhost:8080/admin/booking/21
 
 
 ### delete Booking slot
@@ -61,14 +66,14 @@ PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1
 content-type: application/json
 
 {
-  "id": 21,
-  "location": "pune",
+  "id": 46,
+  "location": "hyderabad",
   "startDate": "2023-05-04",
   "endDate": "2023-05-11",
   "startingTime": "13:00",
   "endingTime": "15:00",
   "price": 101.0,
-  "airConditioning": "no",
+  "airConditioning": "yes",
   "noOfStops": 4,
   "serviceAvailable": "yes"
 
@@ -81,5 +86,5 @@ GET http://localhost:8080/admin/alluserbookings
 
 ### Get all userBooking for specific user by username
 
-GET http://localhost:8080/admin/bookingslot/rueben
+GET http://localhost:8080/admin/alluserbookings/rueben
 

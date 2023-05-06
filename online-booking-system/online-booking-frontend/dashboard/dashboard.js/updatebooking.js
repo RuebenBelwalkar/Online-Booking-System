@@ -2,7 +2,7 @@ const readIdQueryParam = () => {
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
     });
-    return params.bookingId
+    return params.id
 }
 
 console.log(readIdQueryParam())
@@ -19,7 +19,7 @@ function apiGetBookingDetails() {
 }
 
 function apiUpdateExistingForm(bookings, form) {
-    axios.put('http://localhost:8080/booking/updateBooking', bookings)
+    axios.put('http://localhost:8080/admin/bookingslot/update', bookings)
         .then(httpResponse => httpResponse.data)
         .then(data => console.log(data.msg))
         .catch(err => console.log(err))

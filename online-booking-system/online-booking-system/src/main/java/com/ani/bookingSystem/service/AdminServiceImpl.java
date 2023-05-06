@@ -90,6 +90,18 @@ public class AdminServiceImpl implements AdminService {
                 return allBookingSlots;
 
     }
+    @Override
+    public List<LessDetailedBooking> findBookingSlotsByLocation(String location) {
+        List<LessDetailedBooking> allBookingSlots= adminRepository.findBookingSlotByLocation(location)
+                .stream()
+                .map(bookingSlot -> dynamicMapper.convertor(bookingSlot, new LessDetailedBooking()))
+                .collect(Collectors.toList());
+                if (allBookingSlots.isEmpty()) {
+                    throw new BookingSlotNotFoundException("No Booking slots present create new one");
+                }
+                return allBookingSlots;
+
+    }
 
     @Override
     public Integer deleteBookingSlot(Long id) throws BookingSlotNotFoundException {
@@ -148,7 +160,7 @@ public class AdminServiceImpl implements AdminService {
 
     public List<AdminUserBookDto> searchUserBookingsByUserName(String userName) {
         List<AdminUserBookDto> adminUserBookDtos = new ArrayList<>();
-        Users user = usersRepository.findByName(userName);
+        Users user = usersRepository.findByUserName(userName);
         if (user == null) {
             throw new UserNotFoundException("User not found");
         }

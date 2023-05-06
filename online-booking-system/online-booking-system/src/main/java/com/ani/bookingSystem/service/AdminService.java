@@ -25,6 +25,8 @@ public interface AdminService {
 
      List<LessDetailedBooking> findBookingSlots();
 
+     List<LessDetailedBooking> findBookingSlotsByLocation(String location);
+
      Integer deleteBookingSlot(Long id)throws BookingSlotNotFoundException;
 
      Integer updateBookingSlot( BookingSlotDto dto);

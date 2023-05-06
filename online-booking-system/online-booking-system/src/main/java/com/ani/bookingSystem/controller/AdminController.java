@@ -114,6 +114,18 @@ public class AdminController {
                 .build();
         return ResponseEntity.ok().body(response);
     }
+
+    @GetMapping(value = "/bookingslot/{location}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<LessDetailedBooking>>> findBookingSlotsByLocation(@PathVariable String location) {
+        List<LessDetailedBooking> sts = adminService.findBookingSlotsByLocation(location);
+        AppResponse<List<LessDetailedBooking>> response = AppResponse.<List<LessDetailedBooking>>builder()
+                .sts("success")
+                .msg("All Booking slots")
+                .bd(sts)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
+
     //when admin clicks on view details on specific booking
 
     @GetMapping(value = "/booking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
