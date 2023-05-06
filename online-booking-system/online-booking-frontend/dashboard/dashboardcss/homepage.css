@@ -30,9 +30,9 @@ body {
     top: 62%;
     transform: translate(-50%, -50%);
     background-color: whitesmoke;
-    height: 75vh;
+    height: 73vh;
     width: 30%;
-    padding: 20px;
+    padding: 25px;
     border-radius: 20%;
    
 }
@@ -43,8 +43,8 @@ body {
     color: white;
     padding: 25px;
     text-align: center;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin-top: 7%;
+    margin-bottom: 7%;
     cursor: pointer;
     font-size: 25px;
     border-radius: 20px;
@@ -123,6 +123,16 @@ body {
     margin: 0 10px;
     text-align: center;
 }
+.right {
+    float: right;
+    position: relative;
+    top: -40px;
+}
+
+.table-margin {
+    margin-top: 70px;
+}
+</style>
 
 
   

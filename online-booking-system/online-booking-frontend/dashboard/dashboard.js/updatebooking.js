@@ -18,32 +18,44 @@ function apiGetBookingDetails() {
         
 }
 
+// function apiUpdateExistingForm(bookings, form) {
+//     axios.put('http://localhost:8080/admin/bookingslot/update', bookings)
+//         .then(httpResponse => httpResponse.data)
+//         .then(data => console.log(data.msg))
+//         .catch(err => console.log(err))
+
+//         showSuccessModal();
+// }
+
 function apiUpdateExistingForm(bookings, form) {
     axios.put('http://localhost:8080/admin/bookingslot/update', bookings)
         .then(httpResponse => httpResponse.data)
         .then(data => console.log(data.msg))
+        .then(res => {
+            console.log(res)
+            showSuccessModal()
+           
+        })
         .catch(err => console.log(err))
-
-        showSuccessModal();
-}
+    }
 
 function populateForm(form, data) {
     console.log(data)
     const { elements } = form; // it will give all input elements 
-    console.log(elements)
+   // console.log(elements)
 
     const entries = Object.entries(data) // it will give all [keys, values] of invoice json which is received from server
-    console.log(entries)
+    //console.log(entries)
 
     for (const entry of entries) {
         // here entry is an array of 2 elements, oth is key, first is value
-        console.log(entry)
+      //  console.log(entry)
         // const key = entry[0]
         // const value = entry[1]
 
         const [key, value] = entry
         const inputField = elements.namedItem(key)
-        console.log(inputField)
+        //console.log(inputField)
         if (inputField) inputField.value = value
     }
 
@@ -57,12 +69,12 @@ function setupForm() {
         const formData = new FormData(ev.target)
 
         ev.preventDefault() // stop the default behaviour of refreshing the page
-        console.log(ev)
+        //console.log(ev)
 
         const rawData = Object.fromEntries(formData.entries()) // you are converting form data to js object
-        console.log(rawData)
+        //console.log(rawData)
 
-        const bookingId = readIdQueryParam()
+        const id = readIdQueryParam()
 
         // if we need to update, we need to send id, so we creatd new object inclusive of id
         // const invoice = { 
@@ -73,7 +85,7 @@ function setupForm() {
         // }
 
          // ... spread operator, upack operator, it introduced in es6
-        const bookings = { ...rawData, bookingId }
+        const bookings = { ...rawData, id }
         console.log(bookings)
 
         apiUpdateExistingForm(bookings, formUpdateBooking) // we are pass form object to reset the form on success
@@ -89,4 +101,7 @@ function showSuccessModal() {
     const myModalEl = document.getElementById('successModal');
     const modal = new bootstrap.Modal(myModalEl)
     modal.show()
+}
+function goBack(){
+    window.location.href="../dashboardhtml/managebooking.html"
 }

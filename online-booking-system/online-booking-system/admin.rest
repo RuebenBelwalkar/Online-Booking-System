@@ -66,8 +66,8 @@ PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1
 content-type: application/json
 
 {
-  "id": 46,
-  "location": "hyderabad",
+  "id": 21,
+  "location": "agra",
   "startDate": "2023-05-04",
   "endDate": "2023-05-11",
   "startingTime": "13:00",

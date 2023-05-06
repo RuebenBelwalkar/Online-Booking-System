@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ani.bookingSystem.dto.AppResponse;
 import com.ani.bookingSystem.dto.ForgotPasswordDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
-import com.ani.bookingSystem.dto.loginDto;
+import com.ani.bookingSystem.dto.LoginDto;
+import com.ani.bookingSystem.dto.LoginResponseDto;
 import com.ani.bookingSystem.service.LoginService;
 
 
@@ -45,7 +46,7 @@ public class LoginController {
 
     
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<String>> loginUser(@RequestBody loginDto dto) {
+    public ResponseEntity<AppResponse<String>> loginUser(@RequestBody LoginDto dto) {
          String sts = loginService.loginUser(dto);
         
         final AppResponse<String> response = AppResponse.<String>builder()
@@ -63,6 +64,16 @@ public class LoginController {
                 .sts("send")
                 .msg("email has been sent")
                 .bd(pass)
+                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+    @PostMapping(value = "/loginv2", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<LoginResponseDto>> loginResponseDetails(@Valid @RequestBody LoginDto dto) {
+        LoginResponseDto loginUser = loginService.loginUserForResponse(dto);
+        AppResponse<LoginResponseDto> response = AppResponse.<LoginResponseDto>builder()
+                .sts("success")
+                .msg("user login as...")
+                .bd(loginUser)
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

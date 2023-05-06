@@ -14,7 +14,7 @@ function propulateActualData(table, bookings) {
     for(const booking of bookings) {
 
         const {id ,location, startDate, endDate, startingTime, endingTime, price } = booking
-        const viewPageUrl = `./viewbookingdetails.html?id=${id}`
+        const viewPageUrl = `./userviewdetails.html?id=${id}`
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = id

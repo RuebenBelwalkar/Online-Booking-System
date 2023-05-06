@@ -21,7 +21,6 @@ import com.ani.bookingSystem.dto.FeedbackDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.UsersDto;
-import com.ani.bookingSystem.dto.loginDto;
 import com.ani.bookingSystem.service.UserService;
 
 import lombok.AllArgsConstructor;

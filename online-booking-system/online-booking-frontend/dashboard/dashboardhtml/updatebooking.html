@@ -20,14 +20,13 @@
 <body class="text-center">
     <div class="header">
         <h1>ONLINE BOOKING SYSTEM</h1>
+        <a href="../dashboardhtml/admin-homepage.html" class="btn btn-dark ms-auto right" >Home</a>
     </div>
     <div class="line"></div>
     <form class="form-signup" id="formUpdateBooking">
         <h1 class="h3 mb-3 fw-normal">UPDATE BOOKING</h1>
+        
         <div class="row">
-            <div class="col">
-                <div class="alert alert-danger" role="alert" id="errMsg">
-                </div>
             </div>
             <label for="inputLocation" class="visually-hidden">Location</label>
             <input type="text" id="inputUsername" class="form-control" placeholder="Location" name="location" required
@@ -77,7 +76,7 @@
                             <p class="text-black text-lg">User UpdatedSuccessfully!!!</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="goBack()">Close</button> 
                         </div>
                     </div>
                 </div>
