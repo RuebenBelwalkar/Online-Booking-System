@@ -34,9 +34,7 @@ body {
     width: 30%;
     padding: 20px;
     border-radius: 20%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+   
 }
 
 
@@ -50,10 +48,8 @@ body {
     cursor: pointer;
     font-size: 25px;
     border-radius: 20px;
-    flex: 1;
-    margin: 0 10px;
-    text-align: center;
 }
+    
 .form-signup {
     width: 100%;
     max-width: 330px;
@@ -91,9 +87,7 @@ body {
   }
 
   
-  th{
-    color: white;
-  }
+  
   .container {
     width: 95%;
   }
@@ -107,6 +101,10 @@ body {
     width: 23%;
     padding: 10px;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     
 }
 
@@ -121,7 +119,12 @@ body {
     cursor: pointer;
     font-size: 20px;
     border-radius: 15px;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
 }
+
+
   
  
 

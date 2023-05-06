@@ -49,12 +49,12 @@ GET http://localhost:8080/admin/bookingslot
 
 ### Fetch booking slot
 
-GET http://localhost:8080/admin/10
+GET http://localhost:8080/admin/booking/10
 
 
 ### delete Booking slot
 
-DELETE http://localhost:8080/admin/bookingslot/17
+DELETE http://localhost:8080/admin/bookingslot/18
 
 ### update User 
 PUT http://localhost:8080/admin/bookingslot/update HTTP/1.1 

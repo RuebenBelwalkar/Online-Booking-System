@@ -39,9 +39,9 @@ content-type: application/json
 
 {
 
-    "userId": 12,
     "comment": "it is working bad",
-    "rating": 10
+    "rating": 10,
+    "userId": 12
 
 }
 

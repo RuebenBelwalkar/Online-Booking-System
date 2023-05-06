@@ -1,11 +1,5 @@
 
 
-const readIdQueryParam = () => {
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-    });
-    return params.bookingId
-}
 
 console.log(readIdQueryParam())
 
@@ -16,10 +10,10 @@ function setupTable() {
     
     btnSearch.onclick = () =>   {
 
-        apiFetchAllCustomerInvoices(table, document.getElementById('txtClient').value )
+        apiFetchBooking(table, document.getElementById('txtClient').value )
     }
 
-    apiFetchAllInvoices(table)
+    apiFetchAllbookings(table)
 }
 
 setupTable()
@@ -66,7 +60,7 @@ function showConfirmDeleteModal(id) {
 
     const btDl = document.getElementById('btDl')
     btDl.onclick = () => {
-        apiCallDeleteInvoice(id, modal)
+        apiCallDeleteBooking(id, modal)
     }
 }
 
@@ -96,12 +90,13 @@ function apiFetchBooking(table, id) {
 }
 
 
-function apiCallDeleteInvoice(id, modal) {
-    const url = `http://localhost:8080/invoice/${id}`
+function apiCallDeleteBooking(id, modal) {
+    const url = `http://localhost:8080/admin/bookingslot/${id}`
 
     axios.delete(url)
         .then(res => res.data) // you converted complete response in to our business reponse
         // .then( data => console.log(data.msg) ) // this line can be written in destructured form as below
         .then( ({ sts, msg, bd }) =>  modal.hide() )
+        
         .catch(console.log)
 }

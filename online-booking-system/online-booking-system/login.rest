@@ -5,7 +5,7 @@ content-type: application/json
 
 {
     "userName" : "pqr", 
-    "email" : "abc@gmail.com", 
+    "email" : "abdce@gmail.com", 
     "password" : "abcd", 
     "currentLocation" : "mumbai",
     "role" : "user"

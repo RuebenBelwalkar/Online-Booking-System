@@ -108,12 +108,12 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<BookingSlotDto>> getUserByid(@PathVariable Long id) {
+    @GetMapping(value = "/booking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<BookingSlotDto>> getBookingByid(@PathVariable Long id) {
         BookingSlotDto sts = adminService.fetchBookingSlotDetails(id);
         AppResponse<BookingSlotDto> response = AppResponse.<BookingSlotDto>builder()
                 .sts("success")
-                .msg("fetched Bookking slot details")
+                .msg("fetched Booking slot details")
                 .bd(sts)
                 .build();
         return ResponseEntity.ok().body(response);
