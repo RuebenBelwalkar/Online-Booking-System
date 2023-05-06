@@ -13,35 +13,31 @@
       <h1 class="text-center mb-4">Online Booking System</h1>
       
       <!-- Dashboard with tabs -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-              <button class="nav-link active" id="check-booking-tab" data-bs-toggle="tab" data-bs-target="#check-booking" type="button" role="tab" aria-controls="check-booking" aria-selected="true">Check for Booking</button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" id="current-bookings-tab" data-bs-toggle="tab" data-bs-target="#current-bookings" type="button" role="tab" aria-controls="current-bookings" aria-selected="false">Your Current Bookings</button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" id="feedback-tab" data-bs-toggle="tab" data-bs-target="#feedback" type="button" role="tab" aria-controls="feedback" aria-selected="false">Feedback</button>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade " id="check-booking" role="tabpanel" aria-labelledby="check-booking-tab">
-             
-              <p>Check for Booking tab content</p>
-            </div>
-            <div class="tab-pane fade" id="current-bookings" role="tabpanel" aria-labelledby="current-bookings-tab">
-              
-              <p>Your Current Bookings tab content</p>
-            </div>
-            <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
-            
-              <p>Feedback tab content</p>
-            </div>
+      <div class="col-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="check-booking-tab" data-bs-toggle="tab" href="../dashboardhtml/checkbooking.html" role="tab" aria-controls="check-booking" aria-selected="true">Check for Booking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="current-bookings-tab" data-bs-toggle="tab" href="../dashboardhtml/usercurrentbookings.html" role="tab" aria-controls="current-bookings" aria-selected="false">Your Current Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="feedback-tab" data-bs-toggle="tab" href="../dashboardhtml/feedback.html" role="tab" aria-controls="feedback" aria-selected="false">Feedback</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="check-booking" role="tabpanel" aria-labelledby="check-booking-tab">
+            <p>Check for Booking tab content</p>
+          </div>
+          <div class="tab-pane fade" id="current-bookings" role="tabpanel" aria-labelledby="current-bookings-tab">
+            <p>Your Current Bookings tab content</p>
+          </div>
+          <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
+            <p>Feedback tab content</p>
           </div>
         </div>
       </div>
+      
       
       
       <div class="row">

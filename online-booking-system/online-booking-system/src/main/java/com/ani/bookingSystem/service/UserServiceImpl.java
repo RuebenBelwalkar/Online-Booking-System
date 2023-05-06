@@ -77,6 +77,21 @@ public class UserServiceImpl implements UserService {
             }
         }
         return bookingSlotDtos;
+    } 
+    
+    public NewUserBookingDto getUserBookingById(Long userId, Long bookingId) {
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No user found with id " + userId));
+        
+        BookingSlot bookingSlot = user.getBookingSlots().stream()
+                .filter(bs -> bs.getId().equals(bookingId))
+                .findFirst()
+                .orElseThrow(() -> new BookingSlotNotFoundException("No booking slot found with id " + bookingId));
+        
+                NewUserBookingDto bookingSlotDto = new NewUserBookingDto();
+        BeanUtils.copyProperties(bookingSlot, bookingSlotDto);
+        
+        return bookingSlotDto;
     }
 
     @Override

@@ -74,3 +74,12 @@ content-type: application/json
 
 
 }
+
+### Get all userBooking 
+
+GET http://localhost:8080/admin/alluserbookings
+
+### Get all userBooking for specific user by username
+
+GET http://localhost:8080/admin/bookingslot/rueben
+

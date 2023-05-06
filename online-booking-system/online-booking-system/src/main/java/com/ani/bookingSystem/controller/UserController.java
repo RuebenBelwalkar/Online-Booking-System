@@ -34,6 +34,8 @@ public class UserController {
 
     private final UserService userService;
 
+    //to see user profile
+
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<UsersDto>> getUserByid(@PathVariable Long id) {
         UsersDto sts = userService.getUserById(id);
@@ -44,6 +46,7 @@ public class UserController {
                 .build();
         return ResponseEntity.ok().body(response);
     }
+    // will be used when user clicks book
 
     @CrossOrigin
     @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -58,6 +61,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
+    //will be used in current bookings
 
     @CrossOrigin
     @GetMapping(value = "/userbooking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -70,6 +74,19 @@ public class UserController {
                 .build();
         return ResponseEntity.ok().body(response);
     }
+    //will be used in view details
+
+    @GetMapping(value = "/userbooking/{userId}/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <AppResponse<NewUserBookingDto>> getUserBookingById(@PathVariable Long userId,@PathVariable Long bookingId) {
+        NewUserBookingDto sts = userService.getUserBookingById(userId, bookingId);
+        AppResponse <NewUserBookingDto> response = AppResponse.<NewUserBookingDto>builder()
+                .sts("success")
+                .msg("fetched userbookings details")
+                .bd(sts)
+                .build();
+        return ResponseEntity.ok().body(response);
+    }
+    //will be used when delete button is clicked
 
     @DeleteMapping(value = "/{userId}/booking/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<Integer>> deleteUserBooking(@PathVariable Long userId,
@@ -83,6 +100,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
+    //will be used when user clicks submit feedback
 
     @CrossOrigin
     @PostMapping(value = "/feedback/{userId}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -96,6 +114,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
+    //will be used when user clicks show feedbacks
 
     @GetMapping(value = "/feedback", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<FeedbackDto>>> getAllFeedbacks() {
@@ -108,17 +127,16 @@ public class UserController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PutMapping(value = "/feedback/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> updateFeedback(@RequestBody FeedbackDto dto) {
-        final Integer sts = userService.updateFeedback(dto);
-        final AppResponse<Integer> response = AppResponse.<Integer>builder()
-                .sts("success")
-                .msg("Feedback updated Successfully")
-                .bd(sts)
-                .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    // @PutMapping(value = "/feedback/update", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<AppResponse<Integer>> updateFeedback(@RequestBody FeedbackDto dto) {
+    //     final Integer sts = userService.updateFeedback(dto);
+    //     final AppResponse<Integer> response = AppResponse.<Integer>builder()
+    //             .sts("success")
+    //             .msg("Feedback updated Successfully")
+    //             .bd(sts)
+    //             .build();
+    //     return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
-    }
-
+    // }
 
 }

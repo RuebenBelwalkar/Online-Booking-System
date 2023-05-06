@@ -1,5 +1,6 @@
 package com.ani.bookingSystem.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ani.bookingSystem.domain.BookingSlot;
 import com.ani.bookingSystem.domain.Users;
+import com.ani.bookingSystem.dto.AdminUserBookDto;
 import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.LessDetailedBooking;
 import com.ani.bookingSystem.dto.UsersDto;
@@ -123,5 +125,47 @@ public class AdminServiceImpl implements AdminService {
         return bookingSlotDto;
     
     }
+
+    public List<AdminUserBookDto> getAllUserBookings() {
+        List<AdminUserBookDto> adminUserBookDtos = new ArrayList<>();
+        List<Users> users = usersRepository.findAll();
+        for (Users user : users) {
+            for (BookingSlot bookingSlot : user.getBookingSlots()) {
+                AdminUserBookDto adminUserBookDto = new AdminUserBookDto();
+                adminUserBookDto.setUserId(user.getId());
+                adminUserBookDto.setUserName(user.getUserName());
+                adminUserBookDto.setLocation(bookingSlot.getLocation());
+                adminUserBookDto.setStartDate(bookingSlot.getStartDate());
+                adminUserBookDto.setEndDate(bookingSlot.getEndDate());
+                adminUserBookDto.setStartingTime(bookingSlot.getStartingTime());
+                adminUserBookDto.setEndingTime(bookingSlot.getEndingTime());
+                adminUserBookDto.setPrice(bookingSlot.getPrice());
+                adminUserBookDtos.add(adminUserBookDto);
+            }
+        }
+        return adminUserBookDtos;
+    }
+
+    public List<AdminUserBookDto> searchUserBookingsByUserName(String userName) {
+        List<AdminUserBookDto> adminUserBookDtos = new ArrayList<>();
+        Users user = usersRepository.findByName(userName);
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
+        for (BookingSlot bookingSlot : user.getBookingSlots()) {
+            AdminUserBookDto adminUserBookDto = new AdminUserBookDto();
+            adminUserBookDto.setUserId(user.getId());
+            adminUserBookDto.setUserName(user.getUserName());
+            adminUserBookDto.setLocation(bookingSlot.getLocation());
+            adminUserBookDto.setStartDate(bookingSlot.getStartDate());
+            adminUserBookDto.setEndDate(bookingSlot.getEndDate());
+            adminUserBookDto.setStartingTime(bookingSlot.getStartingTime());
+            adminUserBookDto.setEndingTime(bookingSlot.getEndingTime());
+            adminUserBookDto.setPrice(bookingSlot.getPrice());
+            adminUserBookDtos.add(adminUserBookDto);
+        }
+        return adminUserBookDtos;
+    }
+
 
 }

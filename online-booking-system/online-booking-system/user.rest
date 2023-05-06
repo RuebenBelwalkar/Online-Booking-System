@@ -10,7 +10,7 @@ POST http://localhost:8080/user/createbookingslot HTTP/1.1
 content-type: application/json
 
 {
-     "location": "delhi",
+     "location": "mumbai",
       "startDate": "2023-06-04",
       "endDate": "2023-07-11",
       "startingTime": "23:00:00",
@@ -19,14 +19,20 @@ content-type: application/json
       "airConditioning": "no",
       "noOfStops": 4,
       "serviceAvailable": "yes",
-      "userId": 12
+      "userId": 27
 
 
 }
 
 ### Get All user bookings
 
-GET http://localhost:8080/user/userbooking/12
+GET http://localhost:8080/user/userbooking/12/29
+
+
+### Get a user bookings
+
+GET http://localhost:8080/user/userbooking/12/26
+
 
 ### delete Booking slot
 
