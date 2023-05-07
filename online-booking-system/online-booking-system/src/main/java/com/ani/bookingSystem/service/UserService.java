@@ -4,6 +4,7 @@ import java.util.List;
 import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.FeedbackDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
+import com.ani.bookingSystem.dto.UserBookingDto;
 import com.ani.bookingSystem.dto.UsersDto;
 
 
@@ -13,7 +14,7 @@ public interface UserService {
 
     Integer createNewUserBooking(Long userId, Long bookingId);
 
-    List<BookingSlotDto> findUserBookings(Long id);
+    List<UserBookingDto> getAllBookings(Long userId);
 
     NewUserBookingDto getUserBookingById(Long userId, Long bookingId);
 

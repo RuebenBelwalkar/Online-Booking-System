@@ -6,14 +6,14 @@ GET http://localhost:8080/user/12
 
 ### Create New user booking 
 
-POST http://localhost:8080/user/12/booking/28 HTTP/1.1 
+POST http://localhost:8080/user/49/booking/50 HTTP/1.1 
 content-type: application/json
 
 
 
 ### Get All user bookings
 
-GET http://localhost:8080/user/userbooking/12
+GET http://localhost:8080/user/getuserbookings/49
 
 
 ### Get a user bookings

@@ -4,16 +4,29 @@ const validateForm = ({ location,startDate,endDate,startingTime,endingTime,price
      const serviceAvail=['yes','no']
 
     if (location.length <= 0) return { msg: 'invalid location', sts: false}
-    if (startDate.length <= 0) return { msg: 'invalid date', sts: false }
-    if (endDate.length <= 0) return { msg: 'invalid date', sts: false}
+    if (!validateDate(startDate)) return { msg: 'invalid date', sts: false }
+    if (!validateDate(endDate)) return { msg: 'invalid date', sts: false}
     if (startingTime.length <= 0) return { msg: 'invalid time', sts: false }
     if (endingTime.length <= 0) return { msg: 'invalid time', sts: false }
-    if (price.length <= 0) return { msg: 'invalid input', sts: false }
+    if (!validateNumber(price)) return { msg: 'invalid input', sts: false }
     if((airConditioning.length <= 0) || !airCond.includes(airConditioning)) return { msg: 'invalid input', sts: false }
-    if (noOfStops.length <= 0) return { msg: 'invalid input', sts: false }
+    if (!validateNumber(noOfStops)) return { msg: 'invalid input', sts: false }
     if((serviceAvailable.length <= 0) || !serviceAvail.includes(serviceAvailable)) return { msg: 'invalid input', sts: false }
    
-
+    function validateDate(dateStr) {
+        if (!dateStr) {
+            return false;
+        }
+        const currentDate = new Date();
+        const inputDate = new Date(dateStr);
+        return inputDate >= currentDate;
+    }
+    function validateNumber(inputValue) {
+        if (isNaN(inputValue) || inputValue < 0) {
+          return false;
+        }
+        return true;
+      }
 
 
     return { sts : 'success', msg :'all fields are valid' }

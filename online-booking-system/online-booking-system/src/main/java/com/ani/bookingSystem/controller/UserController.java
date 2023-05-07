@@ -21,6 +21,7 @@ import com.ani.bookingSystem.dto.AppResponse;
 import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.FeedbackDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
+import com.ani.bookingSystem.dto.UserBookingDto;
 import com.ani.bookingSystem.dto.UserCreateDto;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.service.UserService;
@@ -76,16 +77,22 @@ public class UserController {
 
     //will be used in current bookings
 
-    @CrossOrigin
-    @GetMapping(value = "/userbooking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<BookingSlotDto>>> findUserByid(@PathVariable Long id) {
-        List<BookingSlotDto> sts = userService.findUserBookings(id);
-        AppResponse<List<BookingSlotDto>> response = AppResponse.<List<BookingSlotDto>>builder()
-                .sts("success")
-                .msg("All userbookings")
-                .bd(sts)
-                .build();
-        return ResponseEntity.ok().body(response);
+    // @CrossOrigin
+    // @GetMapping(value = "/userbooking/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<AppResponse<List<BookingSlotDto>>> findUserByid(@PathVariable Long id) {
+    //     List<BookingSlotDto> sts = userService.findUserBookings(id);
+    //     AppResponse<List<BookingSlotDto>> response = AppResponse.<List<BookingSlotDto>>builder()
+    //             .sts("success")
+    //             .msg("All userbookings")
+    //             .bd(sts)
+    //             .build();
+    //     return ResponseEntity.ok().body(response);
+    // }
+
+    @GetMapping(value = "/getuserbookings/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UserBookingDto>> findAll(@PathVariable Long userId) {
+
+        return ResponseEntity.ok().body(userService.getAllBookings(userId));
     }
     //will be used in view details
 
