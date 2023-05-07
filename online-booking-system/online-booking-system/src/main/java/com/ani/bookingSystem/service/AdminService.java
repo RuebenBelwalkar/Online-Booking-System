@@ -15,6 +15,8 @@ public interface AdminService {
     
      List<UsersDto> findUsers();
 
+     // List<UsersDto> findUsersByUserName(String userName);
+
      UsersDto findUserById(Long id);
 
      Integer deleteUser(Long id)throws UserNotFoundException;

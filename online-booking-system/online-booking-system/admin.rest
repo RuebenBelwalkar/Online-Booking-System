@@ -2,6 +2,10 @@
 
 GET http://localhost:8080/admin/users
 
+### Get All users
+
+GET http://localhost:8080/admin/filterbyusername?userName=rueben
+
 ### fetch user
 
 GET http://localhost:8080/admin/user/9
@@ -86,5 +90,5 @@ GET http://localhost:8080/admin/alluserbookings
 
 ### Get all userBooking for specific user by username
 
-GET http://localhost:8080/admin/alluserbookings/rueben
+GET http://localhost:8080/admin/filterbyname?userName=rueben
 

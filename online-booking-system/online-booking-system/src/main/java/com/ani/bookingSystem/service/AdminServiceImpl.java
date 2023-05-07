@@ -42,6 +42,19 @@ public class AdminServiceImpl implements AdminService {
         }
         return listusers;
     }
+    // public List<UsersDto> findUsersByUserName(String username) {
+    //     List<UsersDto> listusers = usersRepository.findAllByName(username)
+    //         .stream()
+    //         .map(user -> dynamicMapper.convertor(user, new UsersDto()))
+    //         .collect(Collectors.toList());
+    //     if (listusers.isEmpty()) {
+    //         throw new UserNotFoundException("No users found with username: " + username);
+    //     }
+    //     return listusers;
+    // }
+    
+   
+    
 
     // to find all users details with search
     @Override

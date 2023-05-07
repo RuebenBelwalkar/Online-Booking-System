@@ -15,7 +15,9 @@ setupTable()
 
 
 function propulateActualData(table, users) {
-
+    while (table.rows.length > 1) {
+        table.deleteRow(1)
+    }
     for(const user of users) {
 
         const {id ,userName, email, currentLocation} = user

@@ -1,12 +1,12 @@
 function setupTable() {
     const table = document.getElementById('userBookingTable')
 
-    // const btnSearch = document.getElementById('btnSearch')
+    const btnSearch = document.getElementById('btnSearch')
     
-    // btnSearch.onclick = () =>   {
+    btnSearch.onclick = () =>   {
 
-    //     apiFetchBooking(table, document.getElementById('txtUsername').value )
-    // }
+        apiFetchBooking(table, document.getElementById('txtUsername').value )
+    }
     console.log("JS")
     apiFetchAllbookings(table)
 }
@@ -15,11 +15,13 @@ function setupTable() {
 
 
 function propulateActualData(table, userBookings) {
-       console.log(userBookings)
+    while (table.rows.length > 1) {
+        table.deleteRow(1)
+    }
     for(const userBooking of userBookings) {
         console.log(userBooking)
         const {userId, userName,location, startDate, endDate, startingTime, endingTime, price } = userBooking 
-        const viewPageUrl = `./adminviewdetails.html?id=${userId}`
+       
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = userId
@@ -30,11 +32,11 @@ function propulateActualData(table, userBookings) {
         row.insertCell(5).innerHTML = startingTime
         row.insertCell(6).innerHTML = endingTime
         row.insertCell(7).innerHTML = price
-        row.insertCell(8).innerHTML = `
+        
             
-            <a class='ms-2' href='${viewPageUrl}'>view details</a>  
             
-        `
+            
+        
     }
 }
 
@@ -63,18 +65,22 @@ function apiFetchAllbookings(table) {
         .catch(err => console.log(err))
 }
 
-// function apiFetchBooking(table, id) {
-//     const url = `http://localhost:8080/admin/${id}`
-//     axios.get(url)
-//         .then(res => {
-//             const { data } = res
-//             console.log(data)  
-//             const { sts, msg, bd } = data
+function apiFetchBooking(table, username) {
+    const url = `http://localhost:8080/admin/filterbyname`
+    axios.get(url,{
+        params: {
+            userName: username
+        }
+    })
+        .then(res => {
+            const { data } = res
+            console.log(data)  
+            const { sts, msg, bd } = data
 
-//             propulateActualData(table, bd)
-//         })
-//         .catch(err => console.log(err))
-// }
+            propulateActualData(table, bd)
+        })
+        .catch(err => console.log(err))
+}
 
 
 // function apiCallDeleteBooking(id, modal) {

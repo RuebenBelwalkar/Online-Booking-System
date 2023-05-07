@@ -46,6 +46,17 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
+    // @GetMapping(value = "/filterbyusername", produces = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<AppResponse<List<UsersDto>>> findAllByName(@RequestParam String location) {
+    //     List<UsersDto> users = adminService.findUsersByUserName(null);
+    //     AppResponse<List<UsersDto>> response = AppResponse.<List<UsersDto>>builder()
+    //             .sts("success")
+    //             .msg("All users")
+    //             .bd(users)
+    //             .build();
+    //     return ResponseEntity.ok().body(response);
+    // }
+
     //when admin clicks search
 
     @GetMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -116,7 +127,7 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping(value = "/filterLocation", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AppResponse<List<LessDetailedBooking>>> findBookingSlotsByLocation(@RequestParam String location) {
         List<LessDetailedBooking> sts = adminService.findBookingSlotsByLocation(location);
         AppResponse<List<LessDetailedBooking>> response = AppResponse.<List<LessDetailedBooking>>builder()
@@ -185,8 +196,8 @@ public class AdminController {
     }
     //when admin searches username and clicks search
 
-    @GetMapping("/alluserbookings/{userName}")
-    public ResponseEntity<AppResponse<List<AdminUserBookDto>>> searchUserBookingsByUserName(@PathVariable String userName) {
+    @GetMapping(value = "/filterbyname", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<AdminUserBookDto>>> searchUserBookingsByUserName(@RequestParam String userName) {
         List<AdminUserBookDto> sts = adminService.searchUserBookingsByUserName(userName);
         AppResponse<List<AdminUserBookDto>> response = AppResponse.<List<AdminUserBookDto>>builder()
         .sts("success")

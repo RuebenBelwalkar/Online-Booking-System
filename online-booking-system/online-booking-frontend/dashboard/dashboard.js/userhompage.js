@@ -1,5 +1,11 @@
 function setupTable() {
     const table = document.getElementById('table')
+    const btnSearch = document.getElementById('btnSearch')
+    
+    btnSearch.onclick = () =>   {
+
+        apiFetchBooking(table, document.getElementById('txtLocation').value )
+    }
 
 
 
