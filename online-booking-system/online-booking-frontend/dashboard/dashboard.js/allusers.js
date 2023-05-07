@@ -1,0 +1,73 @@
+function setupTable() {
+    const table = document.getElementById('userTable')
+
+    const btnSearch = document.getElementById('btnSearch')
+    
+    btnSearch.onclick = () =>   {
+
+        apiFetchBooking(table, document.getElementById('userId').value )
+    }
+
+    apiFetchAllbookings(table)
+}
+
+setupTable()
+
+
+function propulateActualData(table, users) {
+
+    for(const user of users) {
+
+        const {id ,userName, email, CurrentLocation} = user
+        const updatePageUrl = `./updateuser.html?id=${id}`
+
+        const row = table.insertRow()
+        row.insertCell(0).innerHTML = id
+        row.insertCell(1).innerHTML = userName
+        row.insertCell(2).innerHTML = email
+        row.insertCell(3).innerHTML = CurrentLocation
+        row.insertCell(4).innerHTML = `
+            <a class='ms-2' href='${updatePageUrl}'>Update</a>  
+            
+        `
+    }
+}
+
+function showConfirmDeleteModal(id) {
+    console.log('clicked ' + id)
+    const myModalEl = document.getElementById('deleteModal');
+    const modal = new bootstrap.Modal(myModalEl)
+    modal.show()
+
+    const btDl = document.getElementById('btDl')
+    btDl.onclick = () => {
+        apiCallDeleteBooking(id, modal)
+    }
+}
+
+function apiFetchAllbookings(table) {
+    axios.get('http://localhost:8080/admin/users')
+        .then(res => {
+            const { data } = res
+            console.log(data)  
+            const { sts, msg, bd } = data
+
+            propulateActualData(table, bd)
+        })
+        .catch(err => console.log(err))
+}
+
+function apiFetchBooking(table, id) {
+    const url = `http://localhost:8080/admin/user/${id}`
+    axios.get(url)
+        .then(res => {
+            const { data } = res
+            console.log(data)  
+            const { sts, msg, bd } = data
+
+            propulateActualData(table, bd)
+        })
+        .catch(err => console.log(err))
+}
+
+

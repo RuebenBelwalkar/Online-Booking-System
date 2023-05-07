@@ -2,9 +2,9 @@
 
 GET http://localhost:8080/admin/users
 
-### Get All users
+### fetch user
 
-GET http://localhost:8080/admin/user/14
+GET http://localhost:8080/admin/user/9
 
 ### Delete User By Id 
 DELETE http://localhost:8080/admin/user/

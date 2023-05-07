@@ -132,7 +132,12 @@ body {
 .table-margin {
     margin-top: 70px;
 }
-</style>
+.left {
+    float: left;
+    position: relative;
+    top: -40px;
+}
+
 
 
   

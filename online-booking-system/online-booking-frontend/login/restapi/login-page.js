@@ -40,7 +40,7 @@ function apiLogin(user, form) {
     }
     console.log("inside api")
 
-    axios.post('http://localhost:8080/login/', user, { headers })
+    axios.post('http://localhost:8080/login/loginv2', user, { headers })
         .then(httpResponse => {
             console.log(httpResponse)
             form.reset()
@@ -52,9 +52,9 @@ function apiLogin(user, form) {
 
         }).then(data => {
             console.log(data)
-            const role = data.bd
-
-            if (role == 'admin') window.location.href = '../../dashboard/dashboardhtml/admin-homepage.html'
+            const { role, id } = data.bd
+            localStorage.setItem("userId", id)
+            if (role === 'admin') window.location.href = '../../dashboard/dashboardhtml/admin-homepage.html'
             else window.location.href = '../../dashboard/dashboardhtml/user-homepage.html'
         })
         .catch(err => {
