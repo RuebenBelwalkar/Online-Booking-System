@@ -49,7 +49,7 @@ GET http://localhost:8080/admin/bookingslot
 
 ### Get all Booking slots by location
 
-GET http://localhost:8080/admin/bookingslot/kolkata
+GET http://localhost:8080/admin/filterLocation?location=kolkata
 
 
 ### Fetch booking slot

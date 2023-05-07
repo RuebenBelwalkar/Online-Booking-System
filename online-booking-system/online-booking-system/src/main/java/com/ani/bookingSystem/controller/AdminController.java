@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.bookingSystem.dto.AdminUserBookDto;
@@ -115,8 +116,8 @@ public class AdminController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping(value = "/bookingslot/{location}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<List<LessDetailedBooking>>> findBookingSlotsByLocation(@PathVariable String location) {
+    @GetMapping(value = "/filterLocation", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<LessDetailedBooking>>> findBookingSlotsByLocation(@RequestParam String location) {
         List<LessDetailedBooking> sts = adminService.findBookingSlotsByLocation(location);
         AppResponse<List<LessDetailedBooking>> response = AppResponse.<List<LessDetailedBooking>>builder()
                 .sts("success")
