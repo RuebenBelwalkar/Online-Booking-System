@@ -134,16 +134,18 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    public Integer createFeedback( FeedbackDto feedbackDto) {
-        Users user = usersRepository.findById(feedbackDto.getUserId())
-                    .orElseThrow(() -> new UserNotFoundException("No user found"));
-        Feedback feedback = new Feedback();
-        BeanUtils.copyProperties(feedbackDto, feedback);
+    public FeedbackDto createFeedback(Long userId, FeedbackDto feedbackDto) {
+        Optional<Users> optionalUser = usersRepository.findById(userId);
+        if (!optionalUser.isPresent()) {
+            throw new UserNotFoundException("User not found with id: " + userId);
+        }
+        Users user = optionalUser.get();
+        Feedback feedback = dynamicMapper.convertor(feedbackDto, new Feedback());
         feedback.setUsers(user);
-        feedbackRepository.save(feedback);
-        return 1;
-    }
+        Feedback savedFeedback = feedbackRepository.save(feedback);
+        return dynamicMapper.convertor(savedFeedback, new FeedbackDto());
 
+   
     public List<FeedbackDto> listAllFeedbacks() {
         List<Feedback> feedbackList = feedbackRepository.findAll();
         List<FeedbackDto> feedbackDtoList = new ArrayList<>();
