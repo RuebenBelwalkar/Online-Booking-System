@@ -6,27 +6,14 @@ GET http://localhost:8080/user/12
 
 ### Create New user booking 
 
-POST http://localhost:8080/user/createbookingslot HTTP/1.1 
+POST http://localhost:8080/user/1/createbookingslot/27 HTTP/1.1 
 content-type: application/json
 
-{
-     "location": "mumbai",
-      "startDate": "2023-06-04",
-      "endDate": "2023-07-11",
-      "startingTime": "23:00:00",
-      "endingTime": "05:00:00",
-      "price": 1010.0,
-      "airConditioning": "no",
-      "noOfStops": 4,
-      "serviceAvailable": "yes",
-      "userId": 27
 
-
-}
 
 ### Get All user bookings
 
-GET http://localhost:8080/user/userbooking/12/29
+GET http://localhost:8080/user/userbooking/
 
 
 ### Get a user bookings

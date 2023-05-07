@@ -13,6 +13,7 @@ import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UsersDto;
 import com.ani.bookingSystem.exception.BookingSlotNotFoundException;
 import com.ani.bookingSystem.exception.FeedbackNotFoundException;
+import com.ani.bookingSystem.exception.InvalidRoleException;
 import com.ani.bookingSystem.exception.UserNotFoundException;
 import com.ani.bookingSystem.repository.AdminRepository;
 import com.ani.bookingSystem.repository.FeedbackRepository;
@@ -40,16 +41,31 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    @Override
-    public Integer createNewUserBooking(NewUserBookingDto dto) {
-        Users user = usersRepository.findById(dto.getUserId())
-                .orElseThrow(() -> new UserNotFoundException("No Id found"));
-        BookingSlot bookingSlot = new BookingSlot();
-        BeanUtils.copyProperties(dto, bookingSlot);
-        bookingSlot.getUsers().add(user);
-        adminRepository.save(bookingSlot);
-        return 1;
+    // @Override
+    // public Integer createNewUserBooking(NewUserBookingDto dto) {
+    //     Users user = usersRepository.findById(dto.getUserId())
+    //             .orElseThrow(() -> new UserNotFoundException("No Id found"));
+    //     BookingSlot bookingSlot = new BookingSlot();
+    //     BeanUtils.copyProperties(dto, bookingSlot);
+    //     bookingSlot.getUsers().add(user);
+    //     adminRepository.save(bookingSlot);
+    //     return 1;
 
+    // }
+
+    @Override
+    public Integer createNewUserBooking(Long userId, Long bookingId) {
+
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+
+        if (user.getRole().equals("admin"))
+            throw new InvalidRoleException("Admin can't book Event");
+        BookingSlot booking = adminRepository.findById(bookingId)
+                .orElseThrow(() -> new BookingSlotNotFoundException("Event not Found for " + bookingId + " id"));
+        user.getBookingSlots().add(booking);
+        usersRepository.save(user);
+        return 1;
     }
 
     public List<BookingSlotDto> findUserBookings(Long id) {

@@ -15,7 +15,7 @@ public interface AdminService {
     
      List<UsersDto> findUsers();
 
-     // List<UsersDto> findUsersByUserName(String userName);
+     List<UsersDto> findUsersByUserName(String userName);
 
      UsersDto findUserById(Long id);
 

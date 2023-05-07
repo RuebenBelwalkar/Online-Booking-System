@@ -46,21 +46,15 @@ function logOut() {
     window.location.href = "../../loginpage/login.html"
 }
 
-function showSuccessModalEventBook() {
-    const myModalEl = document.getElementById('successModalEventByUserId');
-    const modal = new bootstrap.Modal(myModalEl)
-    modal.show()
-}
-
 function bookEventByUserId() {
     const userId = localStorage.getItem("userId");
 
-    const eventId = readIdQueryParam()
+    const bookingId = readIdQueryParam()
 
     const headers = {
         'content-type': 'application/json'
     }
-    axios.post(`http://localhost:8080/attendee/${userId}/event/${eventId}`, { headers })
+    axios.post(`http://localhost:8080`, { headers })
 
         .then(res => {
             showSuccessModalEventBook()
@@ -68,10 +62,7 @@ function bookEventByUserId() {
         }).catch(err => console.log(err))
 }
 
-function hideSetBookEvent() {
-    const container = document.getElementById("successModal");
-    container.style.display = "none";
-}
+
 
 function showSuccessModal() {
     const myModalEl = document.getElementById('successModal');

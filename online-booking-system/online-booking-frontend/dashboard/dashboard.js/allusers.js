@@ -5,7 +5,7 @@ function setupTable() {
     
     btnSearch.onclick = () =>   {
 
-        apiFetchBooking(table, document.getElementById('userId').value )
+        apiFetchBooking(table, document.getElementById('txtusername').value )
     }
 
     apiFetchAllbookings(table)
@@ -59,9 +59,13 @@ function apiFetchAllbookings(table) {
         .catch(err => console.log(err))
 }
 
-function apiFetchBooking(table, id) {
-    const url = `http://localhost:8080/admin/user/${id}`
-    axios.get(url)
+function apiFetchBooking(table, userName) {
+    const url = `http://localhost:8080/admin/filterbyusername`
+    axios.get(url,{
+        params: {
+            userName: userName
+        }
+    })
         .then(res => {
             const { data } = res
             console.log(data)  

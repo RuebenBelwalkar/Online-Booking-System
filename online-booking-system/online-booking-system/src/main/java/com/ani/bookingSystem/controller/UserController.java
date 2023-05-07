@@ -2,6 +2,8 @@ package com.ani.bookingSystem.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -47,19 +49,30 @@ public class UserController {
     }
     // will be used when user clicks book
 
-    @CrossOrigin
-    @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody NewUserBookingDto dto) {
-        final Integer sts = userService.createNewUserBooking(dto);
+    // @CrossOrigin
+    // @PostMapping(value = "/createbookingslot", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<AppResponse<Integer>> createNewUserbooking(@RequestBody NewUserBookingDto dto) {
+    //     final Integer sts = userService.createNewUserBooking(dto);
 
-        final AppResponse<Integer> response = AppResponse.<Integer>builder()
-                .sts("success")
-                .msg("user booking Created Successfully")
+    //     final AppResponse<Integer> response = AppResponse.<Integer>builder()
+    //             .sts("success")
+    //             .msg("user booking Created Successfully")
+    //             .bd(sts)
+    //             .build();
+    //     return ResponseEntity.status(HttpStatus.CREATED).body(response);
+
+    // }
+
+    @PostMapping(value = "/{userId}/event/{bookingId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<Integer>> newEvent(@Valid @PathVariable Long userId, @PathVariable Long bookingId) {
+        Integer sts = userService.createNewUserBooking(userId, bookingId);
+        AppResponse<Integer> response = AppResponse.<Integer>builder()
+                .msg("new event booked successfully.")
                 .bd(sts)
                 .build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
     }
+
     //will be used in current bookings
 
     @CrossOrigin

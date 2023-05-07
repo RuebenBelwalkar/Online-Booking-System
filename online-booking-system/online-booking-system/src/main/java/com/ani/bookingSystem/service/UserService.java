@@ -11,7 +11,7 @@ public interface UserService {
 
     UsersDto getUserById(Long userId);
 
-    Integer createNewUserBooking(NewUserBookingDto dto);
+    Integer createNewUserBooking(Long userId, Long bookingId);
 
     List<BookingSlotDto> findUserBookings(Long id);
 
