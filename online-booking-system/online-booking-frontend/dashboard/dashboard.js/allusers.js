@@ -18,14 +18,14 @@ function propulateActualData(table, users) {
 
     for(const user of users) {
 
-        const {id ,userName, email, CurrentLocation} = user
+        const {id ,userName, email, currentLocation} = user
         const updatePageUrl = `./updateuser.html?id=${id}`
 
         const row = table.insertRow()
         row.insertCell(0).innerHTML = id
         row.insertCell(1).innerHTML = userName
         row.insertCell(2).innerHTML = email
-        row.insertCell(3).innerHTML = CurrentLocation
+        row.insertCell(3).innerHTML = currentLocation
         row.insertCell(4).innerHTML = `
             <a class='ms-2' href='${updatePageUrl}'>Update</a>  
             

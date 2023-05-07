@@ -1,14 +1,11 @@
-
-
-
 function setupTable() {
-    const table = document.getElementById('bookingTable')
+    const table = document.getElementById('userBookingTable')
 
     const btnSearch = document.getElementById('btnSearch')
     
     btnSearch.onclick = () =>   {
 
-        apiFetchBooking(table, document.getElementById('txtLocation').value )
+        apiFetchBooking(table, document.getElementById('txtUsername').value )
     }
 
     apiFetchAllbookings(table)
@@ -17,24 +14,24 @@ function setupTable() {
 setupTable()
 
 
-function propulateActualData(table, bookings) {
+function propulateActualData(table, userBookings) {
 
-    for(const booking of bookings) {
+    for(const userBooking of userBookings) {
 
-        const {id ,location, startDate, endDate, startingTime, endingTime, price } = booking
-        const updatePageUrl = `./updatebooking.html?id=${id}`
+        const {userId, userName,location, startDate, endDate, startingTime, endingTime, price } = userBooking 
         const viewPageUrl = `./adminviewdetails.html?id=${id}`
 
         const row = table.insertRow()
-        row.insertCell(0).innerHTML = id
-        row.insertCell(1).innerHTML = location
-        row.insertCell(2).innerHTML = startDate
-        row.insertCell(3).innerHTML = endDate
-        row.insertCell(4).innerHTML = startingTime
-        row.insertCell(5).innerHTML = endingTime
-        row.insertCell(6).innerHTML = price
-        row.insertCell(7).innerHTML = `
-            <a class='ms-2' href='${updatePageUrl}'>Update</a>
+        row.insertCell(0).innerHTML = userId
+        row.insertCell(1).innerHTML = userName
+        row.insertCell(2).innerHTML = location
+        row.insertCell(3).innerHTML = startDate
+        row.insertCell(4).innerHTML = endDate
+        row.insertCell(5).innerHTML = startingTime
+        row.insertCell(6).innerHTML = endingTime
+        row.insertCell(7).innerHTML = price
+        row.insertCell(8).innerHTML = `
+            
             <a class='ms-2' href='${viewPageUrl}'>view details</a>  
             
         `
@@ -54,7 +51,7 @@ function showConfirmDeleteModal(id) {
 }
 
 function apiFetchAllbookings(table) {
-    axios.get('http://localhost:8080/admin/bookingslot')
+    axios.get('http://localhost:8080/admin/alluserbookings')
         .then(res => {
             const { data } = res
             console.log(data)  
