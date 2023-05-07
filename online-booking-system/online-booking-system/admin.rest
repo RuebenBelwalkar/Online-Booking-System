@@ -54,7 +54,7 @@ GET http://localhost:8080/admin/filterLocation?location=kolkata
 
 ### Fetch booking slot
 
-GET http://localhost:8080/admin/booking/21
+GET http://localhost:8080/admin/booking/23
 
 
 ### delete Booking slot
