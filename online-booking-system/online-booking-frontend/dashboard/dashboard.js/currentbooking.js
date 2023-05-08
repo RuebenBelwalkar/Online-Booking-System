@@ -20,9 +20,9 @@ function propulateActualData(table, bookings) {
     }
 
     for(const booking of bookings) {
-
-        const {id ,location, startDate, endDate, startingTime, endingTime, price } = booking
         
+        const {id ,location, startDate, endDate, startingTime, endingTime, price } = booking
+        const viewPageUrl = `./currentbookingdetails.html?id=${id}`
        
 
         const row = table.insertRow()
@@ -35,7 +35,8 @@ function propulateActualData(table, bookings) {
         row.insertCell(6).innerHTML = price
         row.insertCell(7).innerHTML = `
             
-            <a class='ms-2' onclick='showConfirmDeleteModal(${id})'>Delete</a>  
+            <a class='ms-2' onclick='showConfirmDeleteModal(${id})'>Delete Booking</a>
+            <a class='ms-2' href='${viewPageUrl}'>view details</a>  
             
             
             
@@ -64,7 +65,7 @@ function apiFetchAllbookings(table) {
             const { data } = res
             console.log(data)  
             const { sts, msg, bd } = data
-
+            console.log(bd)
             propulateActualData(table, bd)
         })
         .catch(err => console.log(err))
@@ -86,5 +87,18 @@ function apiFetchBooking(table, loc) {
         })
         .catch(err => console.log(err))
 }
+
+function apiCallDeleteBooking(bookingId, modal) {
+    const userId = localStorage.getItem("userId");
+    console.log(userId,bookingId)
+    const url = `http://localhost:8080/user/${userId}/booking/${bookingId}`
+
+    axios.delete(url)
+    .then(res =>
+        window.location.reload())
+    .then(({ sts, msg, bd }) => modal.hide())
+    .catch(console.log)
+}
+
 
 

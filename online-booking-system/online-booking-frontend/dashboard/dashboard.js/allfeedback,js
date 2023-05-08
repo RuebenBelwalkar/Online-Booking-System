@@ -10,6 +10,7 @@ setupTable()
 
 
 function propulateActualData(table, users) {
+    console.log(users)
     while (table.rows.length > 1) {
         table.deleteRow(1)
     }
@@ -43,7 +44,7 @@ function apiFetchAllbookings(table) {
             const { data } = res
             console.log(data)  
             const { sts, msg, bd } = data
-
+            console.log(bd)
             propulateActualData(table, bd)
         })
         .catch(err => console.log(err))

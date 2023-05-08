@@ -8,11 +8,13 @@ function setupTable() {
     
     btnSearch.onclick = () =>   {
 
-        apiFetchBooking(table, document.getElementById('txtLocation').value )
+       const api= apiFetchBooking(table, document.getElementById('txtLocation').value )
+       console.log(api)
     }
 
     apiFetchAllbookings(table)
 }
+
 
 setupTable()
 
@@ -71,6 +73,8 @@ function apiFetchAllbookings(table) {
 }
 
 function apiFetchBooking(table, loc) {
+    console.log(table)
+    console.log(loc)
     const url = `http://localhost:8080/admin/filterLocation`
     axios.get(url,{
         params: {
@@ -92,9 +96,8 @@ function apiCallDeleteBooking(id, modal) {
     const url = `http://localhost:8080/admin/bookingslot/${id}`
 
     axios.delete(url)
-        .then(res => res.data) // you converted complete response in to our business reponse
-        // .then( data => console.log(data.msg) ) // this line can be written in destructured form as below
-        .then( ({ sts, msg, bd }) =>  modal.hide() )
-        
-        .catch(console.log)
+    .then(res =>
+        window.location.reload())
+    .then(({ sts, msg, bd }) => modal.hide())
+    .catch(console.log)
 }

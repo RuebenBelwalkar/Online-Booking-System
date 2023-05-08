@@ -5,9 +5,10 @@ function setupTable() {
     
     btnSearch.onclick = () =>   {
 
-        apiFetchBooking(table, document.getElementById('txtUsername').value )
+        const api=apiFetchBooking(table, document.getElementById('txtUsername').value )
+        console.log(api)
     }
-    console.log("JS")
+    
     apiFetchAllbookings(table)
 }
 
@@ -40,24 +41,14 @@ function propulateActualData(table, userBookings) {
     }
 }
 
-// function showConfirmDeleteModal(id) {
-//     console.log('clicked ' + id)
-//     const myModalEl = document.getElementById('deleteModal');
-//     const modal = new bootstrap.Modal(myModalEl)
-//     modal.show()
 
-//     const btDl = document.getElementById('btDl')
-//     btDl.onclick = () => {
-//         apiCallDeleteBooking(id, modal)
-//     }
-// }
 
 function apiFetchAllbookings(table) {
     axios.get('http://localhost:8080/admin/alluserbookings')
         .then(res => {
-            console.log(res)
+           // console.log(res)
             const { data } = res
-            console.log(data)  
+           // console.log(data)  
             const { sts, msg, bd } = data
 
             propulateActualData(table, bd)
@@ -66,10 +57,12 @@ function apiFetchAllbookings(table) {
 }
 
 function apiFetchBooking(table, username) {
+    console.log(table)
+    console.log(username)
     const url = `http://localhost:8080/admin/filterbyname`
     axios.get(url,{
         params: {
-            userName: username
+            username: username
         }
     })
         .then(res => {

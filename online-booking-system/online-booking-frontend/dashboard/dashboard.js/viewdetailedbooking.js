@@ -33,7 +33,7 @@ function setupForm() {
 
     formEvent.onsubmit = ev => {
         ev.preventDefault()
-        // showSuccessModal()
+         showSuccessModal()
     }
 }
 

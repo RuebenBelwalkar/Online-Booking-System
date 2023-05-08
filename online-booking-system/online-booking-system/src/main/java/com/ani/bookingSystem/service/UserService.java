@@ -18,7 +18,7 @@ public interface UserService {
 
     NewUserBookingDto getUserBookingById(Long userId, Long bookingId);
 
-    //Integer createFeedback(FeedbackDto dto);
+    Integer createFeedback(Long id, FeedbackDto dto);
 
     List<FeedbackDto> listAllFeedbacks();
 

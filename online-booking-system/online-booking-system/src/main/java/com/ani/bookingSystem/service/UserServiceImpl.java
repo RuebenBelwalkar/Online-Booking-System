@@ -134,16 +134,16 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    // public FeedbackDto createFeedback(Long userId, FeedbackDto feedbackDto) {
-    //     Optional<Users> optionalUser = usersRepository.findById(userId);
-    //     if (!optionalUser.isPresent()) {
-    //         throw new UserNotFoundException("User not found with id: " + userId);
-    //     }
-    //     Users user = optionalUser.get();
-    //     Feedback feedback = dynamicMapper.convertor(feedbackDto, new Feedback());
-    //     feedback.setUsers(user);
-    //     Feedback savedFeedback = feedbackRepository.save(feedback);
-    //     return dynamicMapper.convertor(savedFeedback, new FeedbackDto());
+    @Override
+    public Integer createFeedback(Long id, FeedbackDto dto) {
+        Users user = usersRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not Found for " + id + " id"));
+
+        Feedback feedback = dynamicMapper.convertor(dto, new Feedback());
+        feedback.setUsers(user);
+        feedbackRepository.save(feedback);
+        return 1;
+    }
 
    
     public List<FeedbackDto> listAllFeedbacks() {
