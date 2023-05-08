@@ -18,11 +18,11 @@ public interface UserService {
 
     NewUserBookingDto getUserBookingById(Long userId, Long bookingId);
 
-    Integer createFeedback(FeedbackDto dto);
+    //Integer createFeedback(FeedbackDto dto);
 
     List<FeedbackDto> listAllFeedbacks();
 
-    Integer updateFeedback(FeedbackDto feedbackDto);
+    //Integer updateFeedback(FeedbackDto feedbackDto);
 
     Integer deleteUserBooking(Long bookingId, Long userId);
 

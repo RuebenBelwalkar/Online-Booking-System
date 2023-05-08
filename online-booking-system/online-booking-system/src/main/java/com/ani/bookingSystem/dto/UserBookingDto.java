@@ -3,10 +3,14 @@ package com.ani.bookingSystem.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserBookingDto {
     private long id;
-
-    private long bookingId;
   
     private String location;
 

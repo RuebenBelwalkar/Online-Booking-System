@@ -70,8 +70,8 @@ public class UserServiceImpl implements UserService {
         //     throw new InvalidRoleException("Admin can't book Event");
         BookingSlot booking = adminRepository.findById(bookingId)
                 .orElseThrow(() -> new BookingSlotNotFoundException("Event not Found for " + bookingId + " id"));
-        user.getBookingSlots().add(booking);
-        usersRepository.save(user);
+        booking.getUsers().add(user);
+        adminRepository.save(booking);
         return 1;
     }
 
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
                 .map(bookings -> dynamicMapper.convertor(bookings, new UserBookingDto()))
                 .collect(Collectors.toList());
         if (collect.isEmpty())
-            throw new BookingSlotNotFoundException("No bookings found book one.");
+            throw new BookingSlotNotFoundException("No bookings found ");
 
         return collect;
     }
@@ -134,16 +134,16 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    public FeedbackDto createFeedback(Long userId, FeedbackDto feedbackDto) {
-        Optional<Users> optionalUser = usersRepository.findById(userId);
-        if (!optionalUser.isPresent()) {
-            throw new UserNotFoundException("User not found with id: " + userId);
-        }
-        Users user = optionalUser.get();
-        Feedback feedback = dynamicMapper.convertor(feedbackDto, new Feedback());
-        feedback.setUsers(user);
-        Feedback savedFeedback = feedbackRepository.save(feedback);
-        return dynamicMapper.convertor(savedFeedback, new FeedbackDto());
+    // public FeedbackDto createFeedback(Long userId, FeedbackDto feedbackDto) {
+    //     Optional<Users> optionalUser = usersRepository.findById(userId);
+    //     if (!optionalUser.isPresent()) {
+    //         throw new UserNotFoundException("User not found with id: " + userId);
+    //     }
+    //     Users user = optionalUser.get();
+    //     Feedback feedback = dynamicMapper.convertor(feedbackDto, new Feedback());
+    //     feedback.setUsers(user);
+    //     Feedback savedFeedback = feedbackRepository.save(feedback);
+    //     return dynamicMapper.convertor(savedFeedback, new FeedbackDto());
 
    
     public List<FeedbackDto> listAllFeedbacks() {
@@ -161,13 +161,13 @@ public class UserServiceImpl implements UserService {
     
         return feedbackDtoList;
     }
-    public Integer updateFeedback( FeedbackDto feedbackDto) {
-        Feedback feedback = feedbackRepository.findById(feedbackDto.getUserId())
-                .orElseThrow(() -> new FeedbackNotFoundException("No feedback found"));
-        BeanUtils.copyProperties(feedbackDto, feedback);
-        feedbackRepository.save(feedback);
-        return 1;
-    }
+    // public Integer updateFeedback( FeedbackDto feedbackDto) {
+    //     Feedback feedback = feedbackRepository.findById(feedbackDto.getUserId())
+    //             .orElseThrow(() -> new FeedbackNotFoundException("No feedback found"));
+    //     BeanUtils.copyProperties(feedbackDto, feedback);
+    //     feedbackRepository.save(feedback);
+    //     return 1;
+    // }
     
 
 }

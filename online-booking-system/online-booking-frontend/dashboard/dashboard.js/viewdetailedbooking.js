@@ -33,7 +33,7 @@ function setupForm() {
 
     formEvent.onsubmit = ev => {
         ev.preventDefault()
-        showSuccessModal()
+        // showSuccessModal()
     }
 }
 
@@ -50,14 +50,15 @@ function bookByUserId() {
     const userId = localStorage.getItem("userId");
 
     const bookingId = readIdQueryParam()
-
+    console.log(userId,bookingId)
+    
     const headers = {
         'content-type': 'application/json'
     }
     axios.post(`http://localhost:8080/user/${userId}/booking/${bookingId}`, { headers })
 
     .then(()=> {
-        form.reset()
+        // form.reset()
         showSuccessModal()
 
     }).catch(err => console.log(err))

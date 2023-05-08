@@ -6,24 +6,24 @@ GET http://localhost:8080/user/12
 
 ### Create New user booking 
 
-POST http://localhost:8080/user/49/booking/50 HTTP/1.1 
+POST http://localhost:8080/user/65/booking/29 HTTP/1.1 
 content-type: application/json
 
 
 
 ### Get All user bookings
 
-GET http://localhost:8080/user/getuserbookings/49
+GET http://localhost:8080/user/getuserbookings/65
 
 
 ### Get a user bookings
 
-GET http://localhost:8080/user/userbooking/12/29
+GET http://localhost:8080/user/userbooking/49/50
 
 
 ### delete Booking slot
 
-DELETE http://localhost:8080/user/12/booking/28
+DELETE http://localhost:8080/user/49/booking/50
 
 ### Create New user feedback 
 
