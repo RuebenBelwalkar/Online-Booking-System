@@ -102,6 +102,6 @@ function showSuccessModal() {
     const modal = new bootstrap.Modal(myModalEl)
     modal.show()
 }
-function goBack(){
-    window.location.href="../dashboardhtml/managebooking.html"
+function goBack() {
+    window.history.back();
 }

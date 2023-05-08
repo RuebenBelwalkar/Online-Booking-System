@@ -68,3 +68,6 @@ function apiFetchBooking(table, loc) {
         })
         .catch(err => console.log(err))
 }
+function goBack() {
+    window.history.back();
+}

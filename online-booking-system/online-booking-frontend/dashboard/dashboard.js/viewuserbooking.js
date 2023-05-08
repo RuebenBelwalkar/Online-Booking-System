@@ -88,6 +88,9 @@ function apiFetchBooking(table, username) {
 // }
 
 console.log("View page")
+function goBack() {
+    window.history.back();
+}
 
 
 

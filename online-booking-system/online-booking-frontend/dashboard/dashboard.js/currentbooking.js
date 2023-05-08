@@ -99,6 +99,9 @@ function apiCallDeleteBooking(bookingId, modal) {
     .then(({ sts, msg, bd }) => modal.hide())
     .catch(console.log)
 }
+function goBack() {
+    window.history.back();
+}
 
 
 

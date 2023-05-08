@@ -49,6 +49,9 @@ function apiFetchAllbookings(table) {
         })
         .catch(err => console.log(err))
 }
+function goBack() {
+    window.history.back();
+}
 
 
 
