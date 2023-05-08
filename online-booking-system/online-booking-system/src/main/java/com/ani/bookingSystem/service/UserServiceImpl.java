@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ani.bookingSystem.domain.BookingSlot;
 import com.ani.bookingSystem.domain.Feedback;
 import com.ani.bookingSystem.domain.Users;
-import com.ani.bookingSystem.dto.BookingSlotDto;
 import com.ani.bookingSystem.dto.FeedbackDto;
 import com.ani.bookingSystem.dto.NewUserBookingDto;
 import com.ani.bookingSystem.dto.UserBookingDto;
@@ -23,7 +22,7 @@ import com.ani.bookingSystem.repository.AdminRepository;
 import com.ani.bookingSystem.repository.FeedbackRepository;
 import com.ani.bookingSystem.repository.UsersRepository;
 import com.ani.bookingSystem.util.DynamicMapper;
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Dynamic;
+
 
 import org.springframework.beans.BeanUtils;
 
@@ -49,17 +48,6 @@ public class UserServiceImpl implements UserService {
         return userDto;
     }
 
-    // @Override
-    // public Integer createNewUserBooking(NewUserBookingDto dto) {
-    //     Users user = usersRepository.findById(dto.getUserId())
-    //             .orElseThrow(() -> new UserNotFoundException("No Id found"));
-    //     BookingSlot bookingSlot = new BookingSlot();
-    //     BeanUtils.copyProperties(dto, bookingSlot);
-    //     bookingSlot.getUsers().add(user);
-    //     adminRepository.save(bookingSlot);
-    //     return 1;
-
-    // }
 
     @Override
     public Integer createNewUserBooking(Long userId, Long bookingId) {
@@ -76,20 +64,7 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
-    // public List<BookingSlotDto> findUserBookings(Long id) {
-    //     Users user = usersRepository.findById(id)
-    //             .orElseThrow(() -> new UserNotFoundException("No Id found"));
-    //     List<BookingSlotDto> bookingSlotDtos = new ArrayList<>();
-    //     for (BookingSlot bookingSlot : user.getBookingSlots()) {
-    //         BookingSlotDto bookingSlotDto = new BookingSlotDto();
-    //         BeanUtils.copyProperties(bookingSlot, bookingSlotDto);
-    //         bookingSlotDtos.add(bookingSlotDto);
-    //         if(bookingSlotDtos.isEmpty()){
-    //             throw new BookingSlotNotFoundException("no Booking slot present");
-    //         }
-    //     }
-    //     return bookingSlotDtos;
-    // } 
+    
 
     @Override
     public List<UserBookingDto> getAllBookings(Long userId) {
