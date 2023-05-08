@@ -11,7 +11,6 @@ const validateForm = ({ comment, rating}) => {
 function setupForm() {
 
     const err = document.getElementById('errMsg')
-    console.log(err)
     
     const feedback = document.getElementById('feedback')
     console.log(feedback)
@@ -43,7 +42,7 @@ function apiFeedback(user, form) {
     }
     const userId = localStorage.getItem("userId");
     console.log(userId)
-    const url = `http://localhost:8080/user/feedback/${userId}`
+    const url = `http://localhost:8080/user/${userId}/feedback`
     axios.post(url , user, { headers })
         .then(()=> {
             form.reset()

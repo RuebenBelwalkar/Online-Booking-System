@@ -55,7 +55,7 @@ public class Users {
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private List<BookingSlot> bookingSlots=new ArrayList<>();
 
-    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "users", cascade=CascadeType.ALL)
     private List<Feedback> feedback=new ArrayList<>();
 }
 

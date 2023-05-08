@@ -73,5 +73,21 @@ function logout() {
 }
 
 
+function locateUserProfile() {
+const userId = localStorage.getItem("userId")
+const userProfileBtn = document.getElementById("userprofile");
+
+
+userProfileBtn.addEventListener("click", () => {
+  // Construct the URL with the userId parameter
+  const userProfileUrl = `./userprofile.html?userId=${userId}`;
+
+  // Navigate to the user profile page
+  window.location.href = userProfileUrl;
+});
+}
+
+
+
 
 

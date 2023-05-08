@@ -30,7 +30,7 @@ function apiGetEventDetails() {
 
 function setupForm() {
     const formEvent = document.getElementById('bookingdetails')
-
+    console.log(formEvent)
     formEvent.onsubmit = ev => {
         ev.preventDefault()
          showSuccessModal()

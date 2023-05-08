@@ -5,8 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <link rel ="stylesheet" href="../dashboardcss/homepage.css">
+	<style>
+		.btn-feedback {
+       margin-top: 20px;
+}
+	</style>
+	
 </head>
 <body class="text-center">
     <div class="header">
@@ -15,20 +22,26 @@
 
     </div>
     <div class="line"></div>
-
+	  
 	<div class="container mt-5">
+		
 		<h2 class="text-center mb-4">Feedback Form</h2>
-        <a href="../dashboardhtml/allfeedbacks.html" class="btn btn-dark ms-auto right" >Show all feedbacks</a>
+		
+        
 		<form  id="feedback">
-			<div class="mb-3">
+			<div class="mb-3 text-center">
 				<label for="comment" class="form-label">Comment:</label>
 				<textarea class="form-control" id="comment" rows="3"></textarea>
+			</div>
 			</div>
 			<div class="mb-3">
 				<label for="rating" class="form-label">Rating (out of 10):</label>
 				<input type="number" class="form-range" style="color: white;" min="0" max="10" step="1" id="rating">
 			</div>
-			<button type="submit" class="btn btn-primary">Submit Feedback</button>
+			<button type="submit" class="btn btn-dark">Submit Feedback</button>
+			<div >
+				<a href="../dashboardhtml/allfeedbacks.html" class="btn btn-dark ms-auto btn-feedback ">Show all feedbacks</a>
+			  </div>
 			<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 				aria-hidden="true">
 				<div class="modal-dialog">

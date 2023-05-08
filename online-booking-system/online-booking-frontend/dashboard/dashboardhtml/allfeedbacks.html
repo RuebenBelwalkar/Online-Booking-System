@@ -1,22 +1,14 @@
-
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Users</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../dashboardcss/homepage.css">
+	<title>All Feedbacks</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <link rel ="stylesheet" href="../dashboardcss/homepage.css">
 </head>
-
 <body class="text-center">
     <div class="header">
         <h1>ONLINE BOOKING SYSTEM</h1>
@@ -24,29 +16,28 @@
         <a href="../dashboardhtml/feedback.html" class="btn btn-dark  ms-auto left">Go back</a>
     </div>
     <div class="line"></div>
-    <div class="container mt-3" >
-        <div class=" bg-white text-black  ">
-          <div class="col">
-            <h2 class="p-2">ALL FEEDBACKS</h2>
-          </div>
-        </div>
-       
-        <div class="row mt-3">
-          <table class="table table-bordered" id="Table" style="color: white; ">
-            <thead>
-              <tr>
-                <th>Comment</th>
-                <th>Rating</th>
-               
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-    
-        </div>
-      </div>
-    
-      
-      <script src="../dashboard.js/allfeedback,js"></script>
+    <div>
+      <h2>
+        ALL USER FEEDBACKS
+      </h2>
+    </div>
+
+	<div class="container-md mt-4" >
+		<h2 class="text-center mb-4">All Feedbacks</h2>
+		<table class="table " style="color: white;" >
+			<thead>
+				<tr>
+					<th scope="col">Comment</th>
+					<th scope="col">Rating</th>
+				</tr>
+			</thead>
+			<tbody id="feedbacks">
+				<!-- feedbacks will be dynamically loaded here -->
+			</tbody>
+		</table>
+	</div>
+	
+	<script src="../dashboard.js/allfeedback.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

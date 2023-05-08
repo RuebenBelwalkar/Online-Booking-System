@@ -15,6 +15,8 @@ public interface UserService {
     Integer createNewUserBooking(Long userId, Long bookingId);
 
     List<UserBookingDto> getAllBookings(Long userId);
+    
+    List<UserBookingDto> getCurrentBookings(Long userId);
 
     NewUserBookingDto getUserBookingById(Long userId, Long bookingId);
 
@@ -22,7 +24,7 @@ public interface UserService {
 
     List<FeedbackDto> listAllFeedbacks();
 
-    //Integer updateFeedback(FeedbackDto feedbackDto);
+    
 
     Integer deleteUserBooking(Long bookingId, Long userId);
 

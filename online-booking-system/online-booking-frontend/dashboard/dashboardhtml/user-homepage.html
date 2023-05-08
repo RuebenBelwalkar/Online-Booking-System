@@ -21,9 +21,10 @@
     <div class="header">
       <h1>ONLINE BOOKING SYSTEM</h1>
       <a class="btn btn-dark  ms-auto right" onclick="logout()">Logout</a>
+      <a class="btn btn-dark  ms-auto left" id="userprofile" onclick="locateUserProfile()">User-profile</a>
     </div>
     <div class="line"></div>
-    <div class="container-fluid">
+    <div class="container-md">
       
       
       <!-- Dashboard with tabs -->
@@ -38,6 +39,7 @@
           <li class="nav-item">
             <a class="nav-link" id="feedback-tab" data-bs-toggle="tab" href="../dashboardhtml/feedback.html" role="tab" aria-controls="feedback" aria-selected="false">Feedback</a>
           </li>
+         
         </ul>
         <div class="tab-content">
           <div class="tab-pane fade" id="check-booking" role="tabpanel" aria-labelledby="check-booking-tab">
@@ -49,13 +51,14 @@
           <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
             <p>Feedback tab content</p>
           </div>
+          
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <table class="table table-striped" id="table" style="color: white;">
             <div>
-              <h1>AVAILABLE BOOKINGS</h1>
+              <h2>AVAILABLE BOOKINGS</h2>
             </div>
             <thead>
               <tr>

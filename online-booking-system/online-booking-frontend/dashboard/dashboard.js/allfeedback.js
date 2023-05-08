@@ -1,5 +1,5 @@
 function setupTable() {
-    const table = document.getElementById('table')
+    const table = document.getElementById('feedbacks')
 
     
 
@@ -11,12 +11,12 @@ setupTable()
 
 function propulateActualData(table, users) {
     console.log(users)
-    while (table.rows.length > 1) {
-        table.deleteRow(1)
-    }
+   
     for(const user of users) {
 
         const {comment,rating} = user
+        console.log(comment)
+        console.log(rating)
         
         const row = table.insertRow()
         row.insertCell(0).innerHTML = comment

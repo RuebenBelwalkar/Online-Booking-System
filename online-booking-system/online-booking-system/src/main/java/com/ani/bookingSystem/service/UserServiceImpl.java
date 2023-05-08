@@ -1,5 +1,6 @@
 package com.ani.bookingSystem.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -104,6 +105,24 @@ public class UserServiceImpl implements UserService {
             throw new BookingSlotNotFoundException("No bookings found ");
 
         return collect;
+    }
+
+    public List<UserBookingDto> getCurrentBookings(Long userId) {
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+
+        LocalDate currentDate = LocalDate.now();
+
+        List<UserBookingDto> currentBookings = user.getBookingSlots().stream()
+                .filter(booking -> booking.getEndDate().isAfter(currentDate))
+                .map(booking -> dynamicMapper.convertor(booking, new UserBookingDto()))
+                .collect(Collectors.toList());
+
+        if (currentBookings.isEmpty()) {
+            throw new BookingSlotNotFoundException("No current bookings found");
+        }
+
+        return currentBookings;
     }
     
     public NewUserBookingDto getUserBookingById(Long userId, Long bookingId) {
