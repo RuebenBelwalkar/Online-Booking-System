@@ -15,16 +15,16 @@ public interface UserService {
     Integer createNewUserBooking(Long userId, Long bookingId);
 
     List<UserBookingDto> getAllBookings(Long userId);
-    
+
     List<UserBookingDto> getCurrentBookings(Long userId);
+
+    List<UserBookingDto> getBookingHistory(Long userId);
 
     NewUserBookingDto getUserBookingById(Long userId, Long bookingId);
 
     Integer createFeedback(Long id, FeedbackDto dto);
 
     List<FeedbackDto> listAllFeedbacks();
-
-    
 
     Integer deleteUserBooking(Long bookingId, Long userId);
 

@@ -94,11 +94,37 @@ public class UserController {
         List<UserBookingDto> sts=userService.getAllBookings(userId);
         AppResponse<List<UserBookingDto>> response=AppResponse.<List<UserBookingDto>>builder()
                     .sts("success")
-                    .msg("All cureent bookings")
+                    .msg("All  bookings")
                     .bd(sts)
                     .build();
               return ResponseEntity.ok().body(response);
     }
+
+   
+    @GetMapping(value = "/getcurrentbookings/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UserBookingDto>>> findAllCurrent(@PathVariable Long userId) {
+        List<UserBookingDto> sts=userService.getCurrentBookings(userId);
+        AppResponse<List<UserBookingDto>> response=AppResponse.<List<UserBookingDto>>builder()
+                    .sts("success")
+                    .msg("All current bookings")
+                    .bd(sts)
+                    .build();
+              return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping(value = "/getbookinghistory/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<UserBookingDto>>> findAllHistory(@PathVariable Long userId) {
+        List<UserBookingDto> sts=userService.getBookingHistory(userId);
+        AppResponse<List<UserBookingDto>> response=AppResponse.<List<UserBookingDto>>builder()
+                    .sts("success")
+                    .msg("All bookings history")
+                    .bd(sts)
+                    .build();
+              return ResponseEntity.ok().body(response);
+    }
+
+
+    
     //will be used in view details
 
     @GetMapping(value = "/userbooking/{userId}/{bookingId}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -11,9 +11,18 @@ content-type: application/json
 
 
 
-### Get a user bookings for current bookings
+### Get a user bookings 
 
 GET http://localhost:8080/user/getuserbookings/65
+
+### Get a user bookings for current bookings
+
+GET http://localhost:8080/user/getcurrentbookings/70
+
+### Get a user booking history
+
+GET http://localhost:8080/user/getbookinghistory/70
+
 
 
 ### Get a user bookings

@@ -1,12 +1,12 @@
 function setupTable() {
     const table = document.getElementById('bookingTable')
 
-//     const btnSearch = document.getElementById('btnSearch')
+    const btnSearch = document.getElementById('btnSearch')
     
-//     btnSearch.onclick = () =>   {
+    btnSearch.onclick = () =>   {
 
-//         apiFetchBooking(table, document.getElementById('txtLocation').value )
-//     }
+        apiFetchBooking(table, document.getElementById('txtLocation').value )
+    }
 
     apiFetchAllbookings(table)
  }
@@ -59,7 +59,7 @@ function showConfirmDeleteModal(id) {
 function apiFetchAllbookings(table) {
     const userId = localStorage.getItem("userId");
     console.log(userId)
-    const url = `http://localhost:8080/user/getuserbookings/${userId}`
+    const url = `http://localhost:8080/user/getcurrentbookings/${userId}`
     axios.get(url)
         .then(res => {
             const { data } = res

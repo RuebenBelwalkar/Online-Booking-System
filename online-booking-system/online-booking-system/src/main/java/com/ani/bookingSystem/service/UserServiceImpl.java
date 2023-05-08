@@ -124,6 +124,25 @@ public class UserServiceImpl implements UserService {
 
         return currentBookings;
     }
+
+    public List<UserBookingDto> getBookingHistory(Long userId) {
+        Users user = usersRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("No User found for " + userId + " ID"));
+    
+        LocalDate currentDate = LocalDate.now();
+    
+        List<UserBookingDto> bookingHistory = user.getBookingSlots().stream()
+                .filter(booking -> booking.getEndDate().isBefore(currentDate))
+                .map(booking -> dynamicMapper.convertor(booking, new UserBookingDto()))
+                .collect(Collectors.toList());
+    
+        if (bookingHistory.isEmpty()) {
+            throw new BookingSlotNotFoundException("No booking history found");
+        }
+    
+        return bookingHistory;
+    }
+    
     
     public NewUserBookingDto getUserBookingById(Long userId, Long bookingId) {
         Users user = usersRepository.findById(userId)

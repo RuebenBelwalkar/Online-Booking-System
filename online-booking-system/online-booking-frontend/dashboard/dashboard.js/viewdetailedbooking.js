@@ -58,7 +58,7 @@ function bookByUserId() {
     axios.post(`http://localhost:8080/user/${userId}/booking/${bookingId}`, { headers })
 
     .then(()=> {
-        // form.reset()
+         form.reset()
         showSuccessModal()
 
     }).catch(err => console.log(err))
