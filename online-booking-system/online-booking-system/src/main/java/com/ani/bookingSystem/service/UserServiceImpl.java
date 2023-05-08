@@ -59,6 +59,8 @@ public class UserServiceImpl implements UserService {
         //     throw new InvalidRoleException("Admin can't book Event");
         BookingSlot booking = adminRepository.findById(bookingId)
                 .orElseThrow(() -> new BookingSlotNotFoundException("Event not Found for " + bookingId + " id"));
+        
+                if(booking.getUsers().contains(user)) throw new UserNotFoundException("already booked");
         booking.getUsers().add(user);
         adminRepository.save(booking);
         return 1;
