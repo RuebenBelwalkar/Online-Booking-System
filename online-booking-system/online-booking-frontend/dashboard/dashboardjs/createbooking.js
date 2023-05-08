@@ -39,13 +39,12 @@ function setupForm() {
 
     const createBooking = document.getElementById('createBooking')
 
-    createBooking.onsubmit = ev => { // when form is submitted, this function would be called
+    createBooking.onsubmit = ev => { 
+        ev.preventDefault() 
 
-        ev.preventDefault() // stop the default behaviour of refreshing the page
+        const formData = new FormData(ev.target) 
 
-        const formData = new FormData(ev.target) // ev.target points to form tag in the html
-
-        const booking = Object.fromEntries(formData.entries()) // you are converting form data to js object
+        const booking = Object.fromEntries(formData.entries()) 
         console.log(booking)
 
         const { sts, msg } = validateForm(booking)

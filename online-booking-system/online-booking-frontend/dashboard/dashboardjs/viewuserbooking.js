@@ -46,9 +46,9 @@ function propulateActualData(table, userBookings) {
 function apiFetchAllbookings(table) {
     axios.get('http://localhost:8080/admin/alluserbookings')
         .then(res => {
-           // console.log(res)
+           
             const { data } = res
-           // console.log(data)  
+             
             const { sts, msg, bd } = data
 
             propulateActualData(table, bd)
@@ -75,17 +75,6 @@ function apiFetchBooking(table, username) {
         .catch(err => console.log(err))
 }
 
-
-// function apiCallDeleteBooking(id, modal) {
-//     const url = `http://localhost:8080/admin/bookingslot/${id}`
-
-//     axios.delete(url)
-//         .then(res => res.data) // you converted complete response in to our business reponse
-//         // .then( data => console.log(data.msg) ) // this line can be written in destructured form as below
-//         .then( ({ sts, msg, bd }) =>  modal.hide() )
-        
-//         .catch(console.log)
-// }
 
 console.log("View page")
 function goBack() {
