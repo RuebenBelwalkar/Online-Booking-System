@@ -1,6 +1,7 @@
 const validateForm = ({ comment, rating}) => {
 
-
+    if (comment.length <= 0) return { msg: 'Comment cannot be empty', sts: false}
+    if (rating.length <= 0) return { msg: 'Rating cannot be empty', sts: false}
  
     return { sts : true , msg :'all fields are valid' }
 }
@@ -8,6 +9,7 @@ const validateForm = ({ comment, rating}) => {
 function setupForm() {
 
     const err = document.getElementById('errMsg')
+    err.style.display = 'none'
     
     const feedback = document.getElementById('feedback')
     console.log(feedback)
@@ -21,15 +23,15 @@ function setupForm() {
         const user = Object.fromEntries(formData.entries()) 
         console.log(user)
 
-        apiFeedback(user, feedback)
+        // apiFeedback(user, feedback)
 
-        // const { sts, msg } = validateForm(user)
+        const { sts, msg } = validateForm(user)
 
-        // if (sts) apiFeedback(user, feedback)
-        // else {
-        //     err.style.display = 'block'
-        //     err.innerHTML = `<strong>${msg}</strong>`
-        // }
+        if (sts) apiFeedback(user, feedback)
+        else {
+            err.style.display = 'block'
+            err.innerHTML = `<strong>${msg}</strong>`
+        }
     }
 }
 
@@ -58,3 +60,6 @@ function showSuccessModal() {
 function goBack() {
     window.history.back();
 }
+function reloadPage() {
+    location.reload();
+  }

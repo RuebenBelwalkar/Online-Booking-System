@@ -30,6 +30,10 @@
 		
         
 		<form  id="feedback">
+			<div class="col">
+                <div class="alert alert-danger" role="alert" id="errMsg">
+                </div>
+            </div>
 			<div class="mb-3 text-center">
 				<label for="comment" class="form-label">Comment:</label>
 				<textarea class="form-control" id="comment" rows="3" name="comment"></textarea>
@@ -56,7 +60,7 @@
 							<p class="text-black text-lg" style="color: black;" >Thanks for your feedback</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reloadPage()" >Close</button>
 						</div>
 					</div>
 				</div>
